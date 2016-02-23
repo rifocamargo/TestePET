@@ -6,6 +6,7 @@
 package com.lecom.testepetdao.entity;
 
 import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -18,63 +19,74 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "pessoa_fisica")
-@PrimaryKeyJoinColumn(name="id_cliente")
+@PrimaryKeyJoinColumn(name = "id_cliente")
 public class PessoaFisica extends Cliente implements Serializable {
-    
-    private static final long serialVersionUID = 8500276704900728031L;
-    
-    @NotNull
-    @Column(name = "pessoa_fisica_cpf")
-    private String pessoaFisicaCpf;
 
-    public PessoaFisica() {
-    }
+	private static final long serialVersionUID = 8500276704900728031L;
 
-    public PessoaFisica(Integer idCliente) {
-        super(idCliente);
-    }
+	@NotNull
+	@Column(name = "pessoa_fisica_cpf")
+	private String pessoaFisicaCpf;
 
-    public PessoaFisica(Integer idCliente, String pessoaFisicaCpf, Perfil perfil) {
-        super(idCliente, perfil);
-        this.pessoaFisicaCpf = pessoaFisicaCpf;
-    }
+	/**
+	 * Default Constructor
+	 */
+	public PessoaFisica() {
+	}
 
-    public PessoaFisica(String pessoaFisicaCpf, Perfil perfil) {
-        super(perfil);
-        this.pessoaFisicaCpf = pessoaFisicaCpf;
-    }
+	/**
+	 * @param idCliente
+	 */
+	public PessoaFisica(final Integer idCliente) {
+		super(idCliente);
+	}
 
-    public String getPessoaFisicaCpf() {
-        return pessoaFisicaCpf;
-    }
+	/**
+	 * @param nomeCliente
+	 * @param perfil
+	 * @param pessoaFisicaCpf
+	 */
+	public PessoaFisica(final String nomeCliente, final Perfil perfil, final String pessoaFisicaCpf) {
+		super(nomeCliente, perfil);
+		this.pessoaFisicaCpf = pessoaFisicaCpf;
+	}
 
-    public void setPessoaFisicaCpf(String pessoaFisicaCpf) {
-        this.pessoaFisicaCpf = pessoaFisicaCpf;
-    }
+	/**
+	 * @param idCliente
+	 * @param nomeCliente
+	 * @param perfil
+	 * @param pessoaFisicaCpf
+	 */
+	public PessoaFisica(final Integer idCliente, final String nomeCliente, final Perfil perfil,
+			final String pessoaFisicaCpf) {
+		super(idCliente, nomeCliente, perfil);
+		this.pessoaFisicaCpf = pessoaFisicaCpf;
+	}
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (getIdCliente() != null ? getIdCliente().hashCode() : 0);
-        return hash;
-    }
+	/**
+	 * @return the pessoaFisicaCpf
+	 */
+	public String getPessoaFisicaCpf() {
+		return pessoaFisicaCpf;
+	}
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof PessoaFisica)) {
-            return false;
-        }
-        PessoaFisica other = (PessoaFisica) object;
-        if ((this.getIdCliente() == null && other.getIdCliente() != null) || (this.getIdCliente() != null && !this.getIdCliente().equals(other.getIdCliente()))) {
-            return false;
-        }
-        return true;
-    }
+	/**
+	 * @param pessoaFisicaCpf
+	 *            the pessoaFisicaCpf to set
+	 */
+	public void setPessoaFisicaCpf(final String pessoaFisicaCpf) {
+		this.pessoaFisicaCpf = pessoaFisicaCpf;
+	}
 
-    @Override
-    public String toString() {
-        return "com.lecom.testepetdao.entity.PessoaFisica[ idCliente=" + getIdCliente() + " ]";
-    }
-    
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "PessoaFisica [pessoaFisicaCpf=" + pessoaFisicaCpf + ", getIdCliente()=" + getIdCliente()
+				+ ", getNomeCliente()=" + getNomeCliente() + "]";
+	}
+
 }

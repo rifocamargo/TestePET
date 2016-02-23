@@ -5,10 +5,9 @@
  */
 package com.lecom.testepetdao.entity;
 
-import com.lecom.testepetdao.entity.pk.ClienteServicoPK;
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -16,6 +15,11 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+
+import com.lecom.testepetdao.entity.pk.ClienteServicoPK;
 
 /**
  *
@@ -25,94 +29,129 @@ import javax.validation.constraints.NotNull;
 @Table(name = "cliente_servico")
 public class ClienteServico implements Serializable {
 
-    private static final long serialVersionUID = 8386035898841065567L;
+	private static final long serialVersionUID = 8386035898841065567L;
 
-    @EmbeddedId
-    protected ClienteServicoPK clienteServicoPK;
+	@EmbeddedId
+	protected ClienteServicoPK clienteServicoPK;
 
-    @NotNull
-    @Column(name = "data_inicio")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dataInicio;
+	@NotNull
+	@Column(name = "data_inicio")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataInicio;
 
-    @NotNull
-    @Column(name = "data_fim")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dataFim;
+	@NotNull
+	@Column(name = "data_fim")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataFim;
 
-    @NotNull
-    @Column(name = "valor")
-    private BigDecimal valor;
+	@NotNull
+	@Column(name = "valor")
+	private double valor;
 
-    public ClienteServico() {
-    }
+	/**
+	 * Default Constructor
+	 */
+	public ClienteServico() {
+	}
 
-    public ClienteServico(ClienteServicoPK clienteServicoPK) {
-        this.clienteServicoPK = clienteServicoPK;
-    }
+	/**
+	 * @param clienteServicoPK
+	 */
+	public ClienteServico(final ClienteServicoPK clienteServicoPK) {
+		this.clienteServicoPK = clienteServicoPK;
+	}
 
-    public ClienteServico(ClienteServicoPK clienteServicoPK, Date dataInicio, Date dataFim, BigDecimal valor) {
-        this.clienteServicoPK = clienteServicoPK;
-        this.dataInicio = dataInicio;
-        this.dataFim = dataFim;
-        this.valor = valor;
-    }
+	/**
+	 * @param clienteServicoPK
+	 * @param dataInicio
+	 * @param dataFim
+	 * @param valor
+	 */
+	public ClienteServico(final ClienteServicoPK clienteServicoPK, final Date dataInicio, final Date dataFim,
+			final double valor) {
+		this(clienteServicoPK);
+		this.dataInicio = dataInicio;
+		this.dataFim = dataFim;
+		this.valor = valor;
+	}
 
-    public ClienteServicoPK getClienteServicoPK() {
-        return clienteServicoPK;
-    }
+	/**
+	 * @return the clienteServicoPK
+	 */
+	public ClienteServicoPK getClienteServicoPK() {
+		return clienteServicoPK;
+	}
 
-    public void setClienteServicoPK(ClienteServicoPK clienteServicoPK) {
-        this.clienteServicoPK = clienteServicoPK;
-    }
+	/**
+	 * @param clienteServicoPK
+	 *            the clienteServicoPK to set
+	 */
+	public void setClienteServicoPK(final ClienteServicoPK clienteServicoPK) {
+		this.clienteServicoPK = clienteServicoPK;
+	}
 
-    public Date getDataInicio() {
-        return dataInicio;
-    }
+	/**
+	 * @return the dataInicio
+	 */
+	public Date getDataInicio() {
+		return dataInicio;
+	}
 
-    public void setDataInicio(Date dataInicio) {
-        this.dataInicio = dataInicio;
-    }
+	/**
+	 * @param dataInicio
+	 *            the dataInicio to set
+	 */
+	public void setDataInicio(final Date dataInicio) {
+		this.dataInicio = dataInicio;
+	}
 
-    public Date getDataFim() {
-        return dataFim;
-    }
+	/**
+	 * @return the dataFim
+	 */
+	public Date getDataFim() {
+		return dataFim;
+	}
 
-    public void setDataFim(Date dataFim) {
-        this.dataFim = dataFim;
-    }
+	/**
+	 * @param dataFim
+	 *            the dataFim to set
+	 */
+	public void setDataFim(final Date dataFim) {
+		this.dataFim = dataFim;
+	}
 
-    public BigDecimal getValor() {
-        return valor;
-    }
+	/**
+	 * @return the valor
+	 */
+	public double getValor() {
+		return valor;
+	}
 
-    public void setValor(BigDecimal valor) {
-        this.valor = valor;
-    }
+	/**
+	 * @param valor
+	 *            the valor to set
+	 */
+	public void setValor(final double valor) {
+		this.valor = valor;
+	}
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (clienteServicoPK != null ? clienteServicoPK.hashCode() : 0);
-        return hash;
-    }
+	@Override
+	public int hashCode() {
+		return new HashCodeBuilder().append(this.clienteServicoPK).hashCode();
+	}
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ClienteServico)) {
-            return false;
-        }
-        ClienteServico other = (ClienteServico) object;
-        if ((this.clienteServicoPK == null && other.clienteServicoPK != null) || (this.clienteServicoPK != null && !this.clienteServicoPK.equals(other.clienteServicoPK))) {
-            return false;
-        }
-        return true;
-    }
+	@Override
+	public boolean equals(final Object object) {
+		if (!(object instanceof ClienteServico)) {
+			return false;
+		}
+		final ClienteServico other = (ClienteServico) object;
+		return new EqualsBuilder().append(this.clienteServicoPK, other.clienteServicoPK).isEquals();
+	}
 
-    @Override
-    public String toString() {
-        return "com.lecom.testepetdao.entity.ClienteServico[ clienteServicoPK=" + clienteServicoPK + " ]";
-    }
+	@Override
+	public String toString() {
+		return "com.lecom.testepetdao.entity.ClienteServico[ clienteServicoPK=" + clienteServicoPK + " ]";
+	}
 
 }

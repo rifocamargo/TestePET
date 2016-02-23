@@ -7,6 +7,7 @@ package com.lecom.testepetdao.entity;
 
 import java.io.Serializable;
 import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,7 +18,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlTransient;
+
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
  *
@@ -26,101 +29,140 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "servico")
 public class Servico implements Serializable {
-    
-    private static final long serialVersionUID = -3103157719881745331L;
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)    
-    @Column(name = "id_servico")
-    private Integer idServico;
-    
-    @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "nome_servico")
-    private String nomeServico;
-    
-    @NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "descricao_servico")
-    private String descricaoServico;
-    
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "clienteServicoPK.servico")
-    private List<ClienteServico> clienteServicoList;
 
-    public Servico() {
-    }
+	private static final long serialVersionUID = -3103157719881745331L;
 
-    public Servico(Integer idServico) {
-        this.idServico = idServico;
-    }
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_servico")
+	private Integer idServico;
 
-    public Servico(Integer idServico, String nomeServico, String descricaoServico) {
-        this(idServico);
-        this.nomeServico = nomeServico;
-        this.descricaoServico = descricaoServico;
-    }
+	@NotNull
+	@Size(min = 1, max = 45)
+	@Column(name = "nome_servico")
+	private String nomeServico;
 
-    public Servico(String nomeServico, String descricaoServico) {
-        this.nomeServico = nomeServico;
-        this.descricaoServico = descricaoServico;
-    }
+	@NotNull
+	@Size(min = 1, max = 255)
+	@Column(name = "descricao_servico")
+	private String descricaoServico;
 
-    public Integer getIdServico() {
-        return idServico;
-    }
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "clienteServicoPK.servico")
+	private List<ClienteServico> clienteServicoList;
 
-    public void setIdServico(Integer idServico) {
-        this.idServico = idServico;
-    }
+	/**
+	 * Default Constructor
+	 */
+	public Servico() {
+	}
 
-    public String getNomeServico() {
-        return nomeServico;
-    }
+	/**
+	 * @param idServico
+	 */
+	public Servico(final Integer idServico) {
+		this.idServico = idServico;
+	}
 
-    public void setNomeServico(String nomeServico) {
-        this.nomeServico = nomeServico;
-    }
+	/**
+	 * @param idServico
+	 * @param nomeServico
+	 * @param descricaoServico
+	 */
+	public Servico(final Integer idServico, final String nomeServico, final String descricaoServico) {
+		this(idServico);
+		this.nomeServico = nomeServico;
+		this.descricaoServico = descricaoServico;
+	}
 
-    public String getDescricaoServico() {
-        return descricaoServico;
-    }
+	/**
+	 * @param nomeServico
+	 * @param descricaoServico
+	 */
+	public Servico(final String nomeServico, final String descricaoServico) {
+		this.nomeServico = nomeServico;
+		this.descricaoServico = descricaoServico;
+	}
 
-    public void setDescricaoServico(String descricaoServico) {
-        this.descricaoServico = descricaoServico;
-    }
+	/**
+	 * @return the idServico
+	 */
+	public Integer getIdServico() {
+		return idServico;
+	}
 
-    @XmlTransient
-    public List<ClienteServico> getClienteServicoList() {
-        return clienteServicoList;
-    }
+	/**
+	 * @param idServico
+	 *            the idServico to set
+	 */
+	public void setIdServico(final Integer idServico) {
+		this.idServico = idServico;
+	}
 
-    public void setClienteServicoList(List<ClienteServico> clienteServicoList) {
-        this.clienteServicoList = clienteServicoList;
-    }
+	/**
+	 * @return the nomeServico
+	 */
+	public String getNomeServico() {
+		return nomeServico;
+	}
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idServico != null ? idServico.hashCode() : 0);
-        return hash;
-    }
+	/**
+	 * @param nomeServico
+	 *            the nomeServico to set
+	 */
+	public void setNomeServico(final String nomeServico) {
+		this.nomeServico = nomeServico;
+	}
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Servico)) {
-            return false;
-        }
-        Servico other = (Servico) object;
-        if ((this.idServico == null && other.idServico != null) || (this.idServico != null && !this.idServico.equals(other.idServico))) {
-            return false;
-        }
-        return true;
-    }
+	/**
+	 * @return the descricaoServico
+	 */
+	public String getDescricaoServico() {
+		return descricaoServico;
+	}
 
-    @Override
-    public String toString() {
-        return "com.lecom.testepetdao.entity.Servico[ idServico=" + idServico + " ]";
-    }
-    
+	/**
+	 * @param descricaoServico
+	 *            the descricaoServico to set
+	 */
+	public void setDescricaoServico(final String descricaoServico) {
+		this.descricaoServico = descricaoServico;
+	}
+
+	/**
+	 * @return the clienteServicoList
+	 */
+	public List<ClienteServico> getClienteServicoList() {
+		return clienteServicoList;
+	}
+
+	/**
+	 * @param clienteServicoList
+	 *            the clienteServicoList to set
+	 */
+	public void setClienteServicoList(final List<ClienteServico> clienteServicoList) {
+		this.clienteServicoList = clienteServicoList;
+	}
+
+	@Override
+	public int hashCode() {
+		return new HashCodeBuilder().append(this.idServico).hashCode();
+	}
+
+	@Override
+	public boolean equals(final Object object) {
+		// TODO: Warning - this method won't work in the case the id fields are
+		// not set
+		if (!(object instanceof Servico)) {
+			return false;
+		}
+		final Servico other = (Servico) object;
+
+		return new EqualsBuilder().append(this.idServico, other.idServico).isEquals();
+	}
+
+	@Override
+	public String toString() {
+		return "com.lecom.testepetdao.entity.Servico[ idServico=" + idServico + " ]";
+	}
+
 }

@@ -5,12 +5,13 @@
  */
 package com.lecom.testepetdao.dao.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.lecom.testepetdao.dao.AbstractDaoTest;
 import com.lecom.testepetdao.dao.GenericDao;
 import com.lecom.testepetdao.dao.PessoaFisicaDao;
 import com.lecom.testepetdao.entity.Perfil;
 import com.lecom.testepetdao.entity.PessoaFisica;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -33,12 +34,12 @@ public class PessoaFisicaDaoImplTest extends AbstractDaoTest<PessoaFisica> {
 
     @Override
     public Object getModelToInsert() {
-        return new PessoaFisica("Teste Cliente Insert", new Perfil(1));
+        return new PessoaFisica("Teste Cliente Insert", new Perfil(1), "123.456.789-98");
     }
 
     @Override
     public Object getModelToUpdate() {
-        return new PessoaFisica(1, "Teste Cliente Update", new Perfil(2));
+        return new PessoaFisica(1, "Teste Cliente Update", new Perfil(2), "987.654.321-00");
     }
     
 }
