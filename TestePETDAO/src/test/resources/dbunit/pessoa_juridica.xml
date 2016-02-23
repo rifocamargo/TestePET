@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='CP1252'?>
+<dataset>
+  <pessoa_juridica cnpj_pessoa_juridica="123.456.789/1234-12" id_cliente="2"/>
+  <pessoa_juridica cnpj_pessoa_juridica="987.654.321/4321-21" id_cliente="4"/>
+</dataset>

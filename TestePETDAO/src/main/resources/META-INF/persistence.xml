@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="FVSoapIntegrationPU">
+    <class>com.lecom.fvsoapintegrationdao.entity.FatNfItem</class>
+    <class>com.lecom.fvsoapintegrationdao.entity.Empresa</class>
+    <class>com.lecom.fvsoapintegrationdao.entity.CliDistGeog</class>
+    <class>com.lecom.fvsoapintegrationdao.entity.ItemEmbalagem</class>
+    <class>com.lecom.fvsoapintegrationdao.entity.Paises</class>
+    <class>com.lecom.fvsoapintegrationdao.entity.Item</class>
+    <class>com.lecom.fvsoapintegrationdao.entity.TipoCliente</class>
+    <class>com.lecom.fvsoapintegrationdao.entity.Clientes</class>
+    <class>com.lecom.fvsoapintegrationdao.entity.Representante</class>
+    <class>com.lecom.fvsoapintegrationdao.entity.LinhaProd</class>
+    <class>com.lecom.fvsoapintegrationdao.entity.NfMestre</class>
+    <class>com.lecom.fvsoapintegrationdao.entity.UniFeder</class>
+    <class>com.lecom.fvsoapintegrationdao.entity.NfItem</class>
+    <class>com.lecom.fvsoapintegrationdao.entity.DescPrecoMest</class>
+    <class>com.lecom.fvsoapintegrationdao.entity.CondPgto</class>
+    <class>com.lecom.fvsoapintegrationdao.entity.PedidoDigEnt</class>
+    <class>com.lecom.fvsoapintegrationdao.entity.FatNfRepr</class>
+    <class>com.lecom.fvsoapintegrationdao.entity.CliEndEnt</class>
+    <class>com.lecom.fvsoapintegrationdao.entity.DescPrecoItem</class>
+    <class>com.lecom.fvsoapintegrationdao.entity.CliCanalVenda</class>
+    <class>com.lecom.fvsoapintegrationdao.entity.CanalVenda</class>
+    <class>com.lecom.fvsoapintegrationdao.entity.PedidoDigMest</class>
+    <class>com.lecom.fvsoapintegrationdao.entity.CliCredito</class>
+    <class>com.lecom.fvsoapintegrationdao.entity.FatNfMestre</class>
+    <class>com.lecom.fvsoapintegrationdao.entity.VdpClienteCompl</class>
+    <class>com.lecom.fvsoapintegrationdao.entity.PedidoDigItem</class>
+    <class>com.lecom.fvsoapintegrationdao.entity.TipoVenda</class>
+    <class>com.lecom.fvsoapintegrationdao.entity.PedidoDigTexto</class>
+    <class>com.lecom.fvsoapintegrationdao.entity.PedDigItemDesc</class>
+    <class>com.lecom.fvsoapintegrationdao.entity.CliCondPgto</class>
+    <class>com.lecom.fvsoapintegrationdao.entity.CliEndCob</class>
+    <class>com.lecom.fvsoapintegrationdao.entity.Docum</class>
+    <class>com.lecom.fvsoapintegrationdao.entity.Cidades</class>
+    <class>com.lecom.fvsoapintegrationdao.entity.FatNfItemFisc</class>
+    <class>com.lecom.fvsoapintegrationdao.entity.GrupoClientes</class>
+    <class>com.lecom.testepetdao.entity.ClienteServico</class>
+    <class>com.lecom.testepetdao.entity.Servico</class>
+    <class>com.lecom.testepetdao.entity.PessoaFisica</class>
+    <class>com.lecom.testepetdao.entity.PessoaJuridica</class>
+    <class>com.lecom.testepetdao.entity.Perfil</class>
+    <class>com.lecom.testepetdao.entity.Cliente</class>
+    <class>com.lecom.testepetdao.entity.PerfilCliente</class>
+  </persistence-unit>
+</persistence>

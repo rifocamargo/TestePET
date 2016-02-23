@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx" 
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+                           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+                           http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-3.1.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd"
+       default-autowire="no" xmlns:util="http://www.springframework.org/schema/util">
+    
+    <context:component-scan base-package="com.lecom.testepetdao.dao"/>
+    <tx:annotation-driven />
+
+    <!-- JPA configuration -->
+    
+    <!-- Default data source -->	
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" 
+          p:driverClassName="org.h2.Driver" p:url="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1" p:username="sa" p:password=""/>
+    
+    <bean id="entityManager" class="org.springframework.orm.jpa.support.SharedEntityManagerBean">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceXmlLocation" value="classpath:persistence.xml" />
+        <property name="persistenceUnitName" value="TestePETPU" />
+        <property name="dataSource" ref="dataSource" />  
+        <!--<property name="loadTimeWeaver" ref="loadTimeWeaver"/>-->
+        <property name="jpaDialect" ref="jpaDialect"/>
+        <property name="jpaVendorAdapter">
+            <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="databasePlatform" value="org.hibernate.dialect.H2Dialect" />
+            </bean>
+        </property>
+        <property name="jpaPropertyMap">
+            <map>
+                <entry key="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+                <entry key="hibernate.hbm2ddl.auto" value="create" />
+                <entry key="hibernate.show_sql" value="true" />
+                <!--<entry key="hibernate.format_sql" value="true"/>-->
+            </map>
+        </property>
+    </bean>
+    
+    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+    
+    <!--<bean id="loadTimeWeaver" class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver"/>-->
+    
+    <bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect"/>    
+    
+    <!-- END - JPA configuration --> 
+     
+    <bean id="dbUnitStarter" class="com.lecom.testepetdao.dao.util.DbUnitStarter">
+        <property name="dataSource" ref="dataSource" />
+        <property name="dataSetLocations">
+            <list value-type="org.springframework.core.io.Resource">		
+                <value>classpath:dbunit/perfil.xml</value>
+                <value>classpath:dbunit/servico.xml</value>
+                <value>classpath:dbunit/cliente.xml</value>
+                <value>classpath:dbunit/pessoa_fisica.xml</value>
+                <value>classpath:dbunit/pessoa_juridica.xml</value>
+                <value>classpath:dbunit/cliente_servico.xml</value>
+            </list>
+        </property>
+    </bean>
+     
+</beans>
