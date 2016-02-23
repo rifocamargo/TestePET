@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='CP1252'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <dataset>
   <servico id_servico="1" nome_servico="Internet" descricao_servico="Internet Banda Larga"/>
   <servico id_servico="2" nome_servico="E-mail" descricao_servico="Servi&#231;o de e-mail"/>

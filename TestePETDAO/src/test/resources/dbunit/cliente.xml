@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='CP1252'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <dataset>
   <cliente id_cliente="1" nome_cliente="Cliente 1" id_perfil="1"/>
   <cliente id_cliente="2" nome_cliente="Cliente 2" id_perfil="2"/>
