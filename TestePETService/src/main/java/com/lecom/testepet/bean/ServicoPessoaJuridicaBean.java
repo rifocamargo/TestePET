@@ -5,6 +5,7 @@
  */
 package com.lecom.testepet.bean;
 
+import com.lecom.testepet.entity.Cliente;
 import com.lecom.testepet.entity.PessoaJuridica;
 import com.lecom.testepet.entity.Servico;
 import com.lecom.testepet.entity.ServicoCliente;
@@ -14,43 +15,30 @@ import com.lecom.testepet.entity.pk.ServicoClientePK;
 public class ServicoPessoaJuridicaBean extends ServicoClienteBean {
 
     private static final long serialVersionUID = -7774205866705558482L;
-    
-    private String cnpjPessoaJuridica;
 
     public ServicoPessoaJuridicaBean() {
     }
 
-    public String getCnpjPessoaJuridica() {
-        return cnpjPessoaJuridica;
-    }
-
-    public void setCnpjPessoaJuridica(final String cnpjPessoaJuridica) {
-        this.cnpjPessoaJuridica = cnpjPessoaJuridica;
-    }
-    
     @Override
     public ServicoCliente buildEntity() {
-        final PessoaJuridica cliente = new PessoaJuridica(super.getIdCliente(), this.cnpjPessoaJuridica);
-        final Servico servico = new Servico(super.getIdServico());
-        final ServicoClientePK servicoClientePK = new ServicoClientePK(cliente, servico);
-        return new ServicoPessoaJuridica(servicoClientePK, super.getDataInicio(), super.getDataFim(), super.getValor());
+        return new ServicoPessoaJuridica(this.buildPK(), super.getDataInicio(), super.getDataFim(), super.getValor());
     }
 
     @Override
     public ServicoClientePK buildPK() {
-        final PessoaJuridica cliente = new PessoaJuridica(super.getIdCliente());
         final Servico servico = new Servico(super.getIdServico());
+        final Cliente cliente = new PessoaJuridica(super.getIdCliente());
         return new ServicoClientePK(cliente, servico);
     }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "ServicoPessoaJuridicaBean [cnpjPessoaJuridica=" + cnpjPessoaJuridica + ", getIdCliente()="
-				+ getIdCliente() + ", getIdServico()=" + getIdServico() + ", getDataInicio()=" + getDataInicio()
-				+ ", getDataFim()=" + getDataFim() + ", getValor()=" + getValor() + "]";
-	}
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return "ServicoPessoaJuridicaBean [getIdCliente()=" + getIdCliente() + ", getIdServico()=" + getIdServico()
+                + ", getDataInicio()=" + getDataInicio() + ", getDataFim()=" + getDataFim() + ", getValor()=" + getValor() 
+                + ", getPctDescontoPerfil()=" + getPctDescontoPerfil() + ", getValorComDesconto()=" + getValorComDesconto()+ "]";
+    }
 
 }

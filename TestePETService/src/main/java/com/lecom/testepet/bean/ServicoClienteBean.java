@@ -28,16 +28,19 @@ public abstract class ServicoClienteBean implements Serializable {
 
     private double valor;
 
+    private double pctDescontoPerfil;
+
     public abstract ServicoCliente buildEntity();
-    
+
     public abstract ServicoClientePK buildPK();
 
-    public ServicoClienteBean build(final ServicoCliente cliente) {
+    public final ServicoClienteBean build(final ServicoCliente cliente) {
         this.idCliente = cliente.getServicoClientePK().getCliente().getIdCliente();
         this.idServico = cliente.getServicoClientePK().getServico().getIdServico();
         this.dataInicio = cliente.getDataInicio();
         this.dataFim = cliente.getDataFim();
         this.valor = cliente.getValor();
+        this.pctDescontoPerfil = cliente.getServicoClientePK().getCliente().getPerfil().getPctDescontoPerfil();
         return this;
     }
 
@@ -82,6 +85,19 @@ public abstract class ServicoClienteBean implements Serializable {
 
     public void setValor(double valor) {
         this.valor = valor;
+    }
+
+    public double getPctDescontoPerfil() {
+        return pctDescontoPerfil;
+    }
+
+    public void setPctDescontoPerfil(double pctDescontoPerfil) {
+        this.pctDescontoPerfil = pctDescontoPerfil;
+    }
+
+    public double getValorComDesconto() {
+        double valorComDesconto = valor - (valor * (pctDescontoPerfil / 100));
+        return valorComDesconto;
     }
 
 }

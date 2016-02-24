@@ -20,9 +20,18 @@ import org.slf4j.LoggerFactory;
 import com.lecom.testepet.bean.PerfilBean;
 import com.lecom.testepet.bean.PessoaFisicaBean;
 import com.lecom.testepet.bean.PessoaJuridicaBean;
+import com.lecom.testepet.bean.ServicoClienteBean;
+import com.lecom.testepet.bean.ServicoPessoaJuridicaBean;
 import com.lecom.testepet.dao.ClienteDao;
 import com.lecom.testepet.entity.Cliente;
+import com.lecom.testepet.entity.Servico;
+import com.lecom.testepet.entity.ServicoCliente;
+import com.lecom.testepet.entity.ServicoPessoaFisica;
+import com.lecom.testepet.entity.ServicoPessoaJuridica;
+import com.lecom.testepet.entity.pk.ServicoClientePK;
 import com.lecom.testepet.service.ClienteService;
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -30,27 +39,34 @@ import com.lecom.testepet.service.ClienteService;
  */
 @RunWith(PowerMockRunner.class)
 public class ClienteServiceImplTest {
-    
+
     private static final Logger LOGGER = LoggerFactory.getLogger(ClienteServiceImplTest.class);
 
     @InjectMocks
     private final ClienteService clienteService = new ClienteServiceImpl();
-    
+
     @Mock
     private ClienteDao clienteDao;
-    
+
     private final PessoaFisicaBean pessoaFisicaBean = new PessoaFisicaBean();
-    
+
     private final PessoaJuridicaBean pessoaJuridicaBean = new PessoaJuridicaBean();
-    
+
     @Before
     public void setup() {
+
         final PerfilBean perfilBeanOuro = new PerfilBean();
         perfilBeanOuro.setIdPerfil(1);
-        
+        perfilBeanOuro.setNomePerfil("Ouro");
+        perfilBeanOuro.setDescricaoPerfil("Desc Ouro");
+        perfilBeanOuro.setPctDescontoPerfil(10);
+
         final PerfilBean perfilBeanPrata = new PerfilBean();
         perfilBeanPrata.setIdPerfil(2);
-        
+        perfilBeanPrata.setNomePerfil("Prata");
+        perfilBeanPrata.setDescricaoPerfil("Desc Prata");
+        perfilBeanPrata.setPctDescontoPerfil(5);
+
         pessoaFisicaBean.setNomeCliente("Teste Insert PF");
         pessoaFisicaBean.setPessoaFisicaCpf("123.456.789-12");
         pessoaFisicaBean.setPerfilBean(perfilBeanOuro);
@@ -61,35 +77,76 @@ public class ClienteServiceImplTest {
     }
 
     @Test
-    public void saveFindPessoaFisicaTest() {        
-        LOGGER.info("saveFindPessoaFisicaTest");        
+    public void saveFindPessoaFisicaTest() {
+        LOGGER.info("saveFindPessoaFisicaTest");
         clienteService.save(pessoaFisicaBean);
-        
+
         final Cliente cliente = pessoaFisicaBean.buildEntity();
         cliente.setIdCliente(1);
-        PowerMockito.when(clienteDao.find(Mockito.any())).thenReturn(cliente);
+        cliente.setServicoClienteList(new ArrayList<ServicoCliente>());
+        for (int i = 0; i < 4; i++) {
+            final Servico servico = new Servico((i + 1), "Nome Serviço " + (i + 1), "Desc Serviço " + (i + 1));
+            final ServicoClientePK servicoClientePK = new ServicoClientePK(cliente, servico);
+            final ServicoPessoaFisica servicoPessoaFisica = new ServicoPessoaFisica(servicoClientePK, new Date(), new Date(), 100 + i);
+            cliente.getServicoClienteList().add(servicoPessoaFisica);
+        }
         
+        PowerMockito.when(clienteDao.find(Mockito.any())).thenReturn(cliente);
+
         final PessoaFisicaBean clienteBean = (PessoaFisicaBean) clienteService.find(pessoaFisicaBean);
+
+        LOGGER.info("Cliente: {}", clienteBean);
         
         Assert.assertNotNull(clienteBean);
-        Assert.assertEquals(pessoaFisicaBean.getIdCliente(), clienteBean.getIdCliente());        
-        Assert.assertEquals(pessoaFisicaBean.getPessoaFisicaCpf(), clienteBean.getPessoaFisicaCpf());        
-    }
-    
-    @Test
-    public void saveFindPessoaJuridicaTest() {        
-        LOGGER.info("saveFindPessoaJuridicaTest");        
-        clienteService.save(pessoaJuridicaBean);
+        Assert.assertEquals(pessoaFisicaBean.getIdCliente(), clienteBean.getIdCliente());
+        Assert.assertEquals(pessoaFisicaBean.getPessoaFisicaCpf(), clienteBean.getPessoaFisicaCpf());    
         
+        LOGGER.info("Serviços");
+        for (final ServicoClienteBean servicoClienteBean : clienteBean.getServicoClienteBeanList()) {
+            LOGGER.info("Serviço: {}", servicoClienteBean);
+            Assert.assertNotNull(servicoClienteBean.getIdServico());
+            Assert.assertNotNull(servicoClienteBean.getIdCliente());
+            Assert.assertNotNull(servicoClienteBean.getDataFim());
+            Assert.assertNotNull(servicoClienteBean.getDataInicio());
+            Assert.assertTrue(servicoClienteBean.getValor() >= 100);
+        }        
+    }
+
+    @Test
+    public void saveFindPessoaJuridicaTest() {
+        LOGGER.info("saveFindPessoaJuridicaTest");
+        clienteService.save(pessoaJuridicaBean);
+        pessoaJuridicaBean.setIdCliente(1);
+
         final Cliente cliente = pessoaJuridicaBean.buildEntity();
         cliente.setIdCliente(1);
-        PowerMockito.when(clienteDao.find(Mockito.any())).thenReturn(cliente);
+        cliente.setServicoClienteList(new ArrayList<ServicoCliente>());
+        for (int i = 0; i < 4; i++) {
+            final Servico servico = new Servico((i + 1), "Nome Serviço " + (i + 1), "Desc Serviço " + (i + 1));
+            final ServicoClientePK servicoClientePK = new ServicoClientePK(cliente, servico);
+            final ServicoPessoaJuridica servicoPessoaJuridica = new ServicoPessoaJuridica(servicoClientePK, new Date(), new Date(), 100 + i);
+            cliente.getServicoClienteList().add(servicoPessoaJuridica);
+        }
         
+        PowerMockito.when(clienteDao.find(Mockito.any())).thenReturn(cliente);
+
         final PessoaJuridicaBean clienteBean = (PessoaJuridicaBean) clienteService.find(pessoaJuridicaBean);
         
+        LOGGER.info("Cliente: {}", clienteBean);
+
         Assert.assertNotNull(clienteBean);
-        Assert.assertEquals(pessoaJuridicaBean.getIdCliente(), clienteBean.getIdCliente());        
-        Assert.assertEquals(pessoaJuridicaBean.getCnpjPessoaJuridica(), clienteBean.getCnpjPessoaJuridica());        
+        Assert.assertEquals(pessoaJuridicaBean.getIdCliente(), clienteBean.getIdCliente());
+        Assert.assertEquals(pessoaJuridicaBean.getCnpjPessoaJuridica(), clienteBean.getCnpjPessoaJuridica());
+        
+        LOGGER.info("Serviços");
+        for (final ServicoClienteBean servicoClienteBean : clienteBean.getServicoClienteBeanList()) {
+            LOGGER.info("Serviço: {}", servicoClienteBean);
+            Assert.assertNotNull(servicoClienteBean.getIdServico());
+            Assert.assertNotNull(servicoClienteBean.getIdCliente());
+            Assert.assertNotNull(servicoClienteBean.getDataFim());
+            Assert.assertNotNull(servicoClienteBean.getDataInicio());
+            Assert.assertTrue(servicoClienteBean.getValor() >= 100);
+        }
     }
 
 }

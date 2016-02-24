@@ -6,12 +6,8 @@
 package com.lecom.testepet.entity;
 
 import java.io.Serializable;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -29,10 +25,7 @@ public class PessoaFisica extends Cliente implements Serializable {
 
 	@NotNull
 	@Column(name = "pessoa_fisica_cpf")
-	private String pessoaFisicaCpf;
-
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "servicoClientePK.cliente")
-	private List<ServicoPessoaFisica> servicoPessoaFisicaList;
+	private String pessoaFisicaCpf;	
 
 	/**
 	 * Default Constructor
@@ -93,20 +86,6 @@ public class PessoaFisica extends Cliente implements Serializable {
 		this.pessoaFisicaCpf = pessoaFisicaCpf;
 	}
 
-	/**
-	 * @return the servicoPessoaFisicaList
-	 */
-	public List<ServicoPessoaFisica> getServicoPessoaFisicaList() {
-		return servicoPessoaFisicaList;
-	}
-
-	/**
-	 * @param servicoPessoaFisicaList
-	 *            the servicoPessoaFisicaList to set
-	 */
-	public void setServicoPessoaFisicaList(final List<ServicoPessoaFisica> servicoPessoaFisicaList) {
-		this.servicoPessoaFisicaList = servicoPessoaFisicaList;
-	}
 
 	/*
 	 * (non-Javadoc)
@@ -115,8 +94,7 @@ public class PessoaFisica extends Cliente implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return "PessoaFisica [pessoaFisicaCpf=" + pessoaFisicaCpf + ", servicoPessoaFisicaList="
-				+ servicoPessoaFisicaList + ", getIdCliente()=" + getIdCliente() + ", getNomeCliente()="
+		return "PessoaFisica [pessoaFisicaCpf=" + pessoaFisicaCpf + ", getIdCliente()=" + getIdCliente() + ", getNomeCliente()="
 				+ getNomeCliente() + ", getPerfil()=" + getPerfil() + "]";
 	}
 

@@ -9,6 +9,7 @@ import java.io.Serializable;
 
 import com.lecom.testepet.entity.Cliente;
 import com.lecom.testepet.entity.PessoaFisica;
+import com.lecom.testepet.entity.ServicoCliente;
 
 public class PessoaFisicaBean extends ClienteBean implements Serializable {
 
@@ -39,19 +40,21 @@ public class PessoaFisicaBean extends ClienteBean implements Serializable {
 
     @Override
     public ClienteBean build(final Cliente cliente) {
-        super.build(cliente);
         final PessoaFisica pessoaFisica = (PessoaFisica) cliente;
-        this.pessoaFisicaCpf = pessoaFisica.getPessoaFisicaCpf();
+        this.pessoaFisicaCpf = pessoaFisica.getPessoaFisicaCpf();  
+        for (final ServicoCliente servicoCliente : cliente.getServicoClienteList()) {
+            super.getServicoClienteBeanList().add(new ServicoPessoaFisicaBean().build(servicoCliente));
+        }
         return super.build(cliente);
     }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "PessoaFisicaBean [pessoaFisicaCpf=" + pessoaFisicaCpf + ", getNomeCliente()=" + getNomeCliente()
-				+ ", getPerfilBean()=" + getPerfilBean() + ", getIdCliente()=" + getIdCliente() + "]";
-	}
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return "PessoaFisicaBean [pessoaFisicaCpf=" + pessoaFisicaCpf + ", getNomeCliente()=" + getNomeCliente()
+                + ", getPerfilBean()=" + getPerfilBean() + ", getIdCliente()=" + getIdCliente() + "]";
+    }
 
 }

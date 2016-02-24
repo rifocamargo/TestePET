@@ -9,6 +9,7 @@ import java.io.Serializable;
 
 import com.lecom.testepet.entity.Cliente;
 import com.lecom.testepet.entity.PessoaJuridica;
+import com.lecom.testepet.entity.ServicoCliente;
 
 public class PessoaJuridicaBean extends ClienteBean implements Serializable {
 
@@ -31,18 +32,20 @@ public class PessoaJuridicaBean extends ClienteBean implements Serializable {
 
     @Override
     public ClienteBean build(final Cliente cliente) {
-        super.build(cliente);
         final PessoaJuridica pessoaFisica = (PessoaJuridica) cliente;
-        this.cnpjPessoaJuridica = pessoaFisica.getCnpjPessoaJuridica();
-        return this;
+        this.cnpjPessoaJuridica = pessoaFisica.getCnpjPessoaJuridica();           
+        for (final ServicoCliente servicoCliente : cliente.getServicoClienteList()) {
+            super.getServicoClienteBeanList().add(new ServicoPessoaJuridicaBean().build(servicoCliente));
+        }
+        return super.build(cliente);
     }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "PessoaJuridicaBean [cnpjPessoaJuridica=" + cnpjPessoaJuridica + ", getNomeCliente()=" + getNomeCliente()
-				+ ", getPerfilBean()=" + getPerfilBean() + ", getIdCliente()=" + getIdCliente() + "]";
-	}
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return "PessoaJuridicaBean [cnpjPessoaJuridica=" + cnpjPessoaJuridica + ", getNomeCliente()=" + getNomeCliente()
+                + ", getPerfilBean()=" + getPerfilBean() + ", getIdCliente()=" + getIdCliente() + "]";
+    }
 }

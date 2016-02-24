@@ -6,12 +6,8 @@
 package com.lecom.testepet.entity;
 
 import java.io.Serializable;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -30,9 +26,6 @@ public class PessoaJuridica extends Cliente implements Serializable {
 	@NotNull
 	@Column(name = "cnpj_pessoa_juridica")
 	private String cnpjPessoaJuridica;
-
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "servicoClientePK.cliente")
-	private List<ServicoPessoaJuridica> servicoPessoaJuridicaList;
 
 	/**
 	 * Default Constructor
@@ -91,21 +84,6 @@ public class PessoaJuridica extends Cliente implements Serializable {
 	 */
 	public void setCnpjPessoaJuridica(final String cnpjPessoaJuridica) {
 		this.cnpjPessoaJuridica = cnpjPessoaJuridica;
-	}
-
-	/**
-	 * @return the servicoPessoaJuridicaList
-	 */
-	public List<ServicoPessoaJuridica> getServicoPessoaJuridicaList() {
-		return servicoPessoaJuridicaList;
-	}
-
-	/**
-	 * @param servicoPessoaJuridicaList
-	 *            the servicoPessoaJuridicaList to set
-	 */
-	public void setServicoPessoaJuridicaList(final List<ServicoPessoaJuridica> servicoPessoaJuridicaList) {
-		this.servicoPessoaJuridicaList = servicoPessoaJuridicaList;
 	}
 
 	/*

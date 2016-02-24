@@ -22,6 +22,7 @@ import org.slf4j.LoggerFactory;
 import com.lecom.testepet.bean.ServicoPessoaFisicaBean;
 import com.lecom.testepet.bean.ServicoPessoaJuridicaBean;
 import com.lecom.testepet.dao.ServicoClienteDao;
+import com.lecom.testepet.entity.Perfil;
 import com.lecom.testepet.entity.ServicoCliente;
 import com.lecom.testepet.service.ServicoClienteService;
 
@@ -50,15 +51,13 @@ public class ServicoClienteServiceImplTest {
         servicoPessoaFisicaBean.setDataInicio(new Date());
         servicoPessoaFisicaBean.setIdCliente(1);
         servicoPessoaFisicaBean.setIdServico(1);
-        servicoPessoaFisicaBean.setPessoaFisicaCpf("123.456.789-12");
-        servicoPessoaFisicaBean.setValor(1d);
+        servicoPessoaFisicaBean.setValor(100d);
 
         servicoPessoaJuridicaBean.setDataFim(new Date());
         servicoPessoaJuridicaBean.setDataInicio(new Date());
         servicoPessoaJuridicaBean.setIdCliente(1);
         servicoPessoaJuridicaBean.setIdServico(1);
-        servicoPessoaJuridicaBean.setCnpjPessoaJuridica("987.654.321/0001-45");
-        servicoPessoaJuridicaBean.setValor(2d);
+        servicoPessoaJuridicaBean.setValor(100d);
     }
 
     @Test
@@ -67,14 +66,20 @@ public class ServicoClienteServiceImplTest {
         servicoClienteService.save(servicoPessoaFisicaBean);
 	
         final ServicoCliente servicoCliente = servicoPessoaFisicaBean.buildEntity();
-        servicoCliente.getServicoClientePK().getCliente().setNomeCliente("Nome Teste");
+        servicoCliente.getServicoClientePK().getCliente().setPerfil(new Perfil("Ouro", "Desc Ouro", 10));
         PowerMockito.when(servicoClienteDao.find(Mockito.any())).thenReturn(servicoCliente);
 
         final ServicoPessoaFisicaBean clienteBean = (ServicoPessoaFisicaBean) servicoClienteService.find(servicoPessoaFisicaBean);
 
+        LOGGER.info("Serviço Inserido: {}", clienteBean);
+        
         Assert.assertNotNull(clienteBean);
         Assert.assertEquals(servicoPessoaFisicaBean.getIdCliente(), clienteBean.getIdCliente());
-        Assert.assertEquals(servicoPessoaFisicaBean.getPessoaFisicaCpf(), clienteBean.getPessoaFisicaCpf());
+        Assert.assertEquals(servicoPessoaFisicaBean.getIdServico(), clienteBean.getIdServico());
+        Assert.assertEquals(servicoPessoaFisicaBean.getDataFim(), clienteBean.getDataFim());
+        Assert.assertEquals(servicoPessoaFisicaBean.getDataInicio(), clienteBean.getDataInicio());
+        Assert.assertTrue(servicoPessoaFisicaBean.getPctDescontoPerfil() == clienteBean.getPctDescontoPerfil());
+        Assert.assertTrue(servicoPessoaFisicaBean.getValor() == clienteBean.getValor());
     }
 
     @Test
@@ -83,14 +88,20 @@ public class ServicoClienteServiceImplTest {
         servicoClienteService.save(servicoPessoaJuridicaBean);
 
         final ServicoCliente servicoCliente = servicoPessoaJuridicaBean.buildEntity();
-        servicoCliente.getServicoClientePK().getCliente().setNomeCliente("Nome Teste");
+        servicoCliente.getServicoClientePK().getCliente().setPerfil(new Perfil("Ouro", "Desc Ouro", 10));
         PowerMockito.when(servicoClienteDao.find(Mockito.any())).thenReturn(servicoCliente);
 
         final ServicoPessoaJuridicaBean clienteBean = (ServicoPessoaJuridicaBean) servicoClienteService.find(servicoPessoaJuridicaBean);
+        
+        LOGGER.info("Serviço Inserido: {}", clienteBean);
 
         Assert.assertNotNull(clienteBean);
         Assert.assertEquals(servicoPessoaJuridicaBean.getIdCliente(), clienteBean.getIdCliente());
-        Assert.assertEquals(servicoPessoaJuridicaBean.getCnpjPessoaJuridica(), clienteBean.getCnpjPessoaJuridica());
+        Assert.assertEquals(servicoPessoaJuridicaBean.getIdServico(), clienteBean.getIdServico());
+        Assert.assertEquals(servicoPessoaJuridicaBean.getDataFim(), clienteBean.getDataFim());
+        Assert.assertEquals(servicoPessoaJuridicaBean.getDataInicio(), clienteBean.getDataInicio());
+        Assert.assertTrue(servicoPessoaJuridicaBean.getPctDescontoPerfil() == clienteBean.getPctDescontoPerfil());
+        Assert.assertTrue(servicoPessoaJuridicaBean.getValor() == clienteBean.getValor());
     }
 
 }

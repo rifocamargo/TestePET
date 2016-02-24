@@ -24,7 +24,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @author Ricardo
  */
 public class ServicoClienteDaoImplTest extends AbstractDaoTest<ServicoCliente> {
-    
+
     @Autowired
     private ServicoClienteDao servicoClienteDao;
 
@@ -42,7 +42,7 @@ public class ServicoClienteDaoImplTest extends AbstractDaoTest<ServicoCliente> {
 
     @Override
     public Object getModelToInsert() {
-        final PessoaFisica cliente = new PessoaFisica(1);
+        final Cliente cliente = new PessoaFisica(1);
         final Servico servico = new Servico(2);
         final ServicoClientePK servicoClientePK = new ServicoClientePK(cliente, servico);
         return new ServicoPessoaFisica(servicoClientePK, new Date(), new Date(), 1.1d);
@@ -50,10 +50,10 @@ public class ServicoClienteDaoImplTest extends AbstractDaoTest<ServicoCliente> {
 
     @Override
     public Object getModelToUpdate() {
-        final PessoaJuridica cliente = new PessoaJuridica(2);
+        final Cliente cliente = new PessoaJuridica(2);
         final Servico servico = new Servico(3);
         final ServicoClientePK servicoClientePK = new ServicoClientePK(cliente, servico);
         return new ServicoPessoaJuridica(servicoClientePK, new Date(), new Date(), 10d);
     }
-    
+
 }

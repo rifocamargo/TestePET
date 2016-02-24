@@ -21,24 +21,24 @@ import com.lecom.testepet.entity.pk.ServicoClientePK;
 @Table(name = "servico_pessoa_fisica")
 public class ServicoPessoaFisica extends ServicoCliente implements Serializable {
 
-	private static final long serialVersionUID = 2600283794069576675L;
+    private static final long serialVersionUID = 2600283794069576675L;
 
-	public ServicoPessoaFisica() {
-	}
+    public ServicoPessoaFisica() {
+    }
 
-	public ServicoPessoaFisica(final ServicoClientePK servicoPessoaFisicaPK) {
-		super(servicoPessoaFisicaPK);
-	}
+    public ServicoPessoaFisica(final ServicoClientePK servicoPessoaFisicaPK) {
+        super(servicoPessoaFisicaPK);
+    }
 
-	public ServicoPessoaFisica(final ServicoClientePK servicoPessoaFisicaPK, final Date dataInicio, final Date dataFim, final double valor) {
-		super(servicoPessoaFisicaPK, dataInicio, dataFim, valor);
-	}
+    public ServicoPessoaFisica(final ServicoClientePK servicoPessoaFisicaPK, final Date dataInicio, final Date dataFim, final double valor) {
+        super(servicoPessoaFisicaPK, dataInicio, dataFim, valor);
+    }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "ServicoPessoaFisica [servicoClientePK=" + servicoClientePK + "]";
-	}
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return "ServicoPessoaFisica [servicoClientePK=" + servicoClientePK + "]";
+    }
 }

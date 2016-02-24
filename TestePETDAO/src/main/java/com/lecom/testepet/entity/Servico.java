@@ -47,12 +47,6 @@ public class Servico implements Serializable {
 	@Column(name = "descricao_servico")
 	private String descricaoServico;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "servicoClientePK.servico")
-	private List<ServicoPessoaJuridica> servicoPessoaJuridicaList;
-
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "servicoClientePK.servico")
-	private List<ServicoPessoaFisica> servicoPessoaFisicaList;
-
 	/**
 	 * Default Constructor
 	 */
@@ -129,22 +123,6 @@ public class Servico implements Serializable {
 	 */
 	public void setDescricaoServico(final String descricaoServico) {
 		this.descricaoServico = descricaoServico;
-	}
-
-	public List<ServicoPessoaJuridica> getServicoPessoaJuridicaList() {
-		return servicoPessoaJuridicaList;
-	}
-
-	public void setServicoPessoaJuridicaList(final List<ServicoPessoaJuridica> servicoPessoaJuridicaList) {
-		this.servicoPessoaJuridicaList = servicoPessoaJuridicaList;
-	}
-
-	public List<ServicoPessoaFisica> getServicoPessoaFisicaList() {
-		return servicoPessoaFisicaList;
-	}
-
-	public void setServicoPessoaFisicaList(final List<ServicoPessoaFisica> servicoPessoaFisicaList) {
-		this.servicoPessoaFisicaList = servicoPessoaFisicaList;
 	}
 
 	@Override

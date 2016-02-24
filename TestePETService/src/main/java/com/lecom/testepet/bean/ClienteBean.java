@@ -6,6 +6,9 @@
 package com.lecom.testepet.bean;
 
 import com.lecom.testepet.entity.Cliente;
+import com.lecom.testepet.entity.ServicoCliente;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -13,14 +16,16 @@ import com.lecom.testepet.entity.Cliente;
  */
 public abstract class ClienteBean {
 
-    private int idCliente;
-    
+    private Integer idCliente;
+
     private String nomeCliente;
 
     private PerfilBean perfilBean;
 
+    private final List<ServicoClienteBean> servicoClienteBeanList = new ArrayList<>();
+
     public abstract Cliente buildEntity();
-    
+
     public ClienteBean build(final Cliente cliente) {
         this.idCliente = cliente.getIdCliente();
         this.nomeCliente = cliente.getNomeCliente();
@@ -52,13 +57,16 @@ public abstract class ClienteBean {
         this.perfilBean = perfilBean;
     }
 
-    public int getIdCliente() {
+    public Integer getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(int idCliente) {
+    public void setIdCliente(Integer idCliente) {
         this.idCliente = idCliente;
     }
 
+    public List<ServicoClienteBean> getServicoClienteBeanList() {
+        return servicoClienteBeanList;
+    }
 
 }

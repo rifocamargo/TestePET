@@ -6,6 +6,8 @@
 package com.lecom.testepet.entity;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +18,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -45,6 +48,9 @@ public abstract class Cliente implements Serializable {
     @JoinColumn(name = "id_perfil", referencedColumnName = "id_perfil")
     @ManyToOne(optional = false)
     private Perfil perfil;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "servicoClientePK.cliente")
+    private List<ServicoCliente> servicoClienteList;
 
     /**
      * Default Constructor
@@ -119,6 +125,14 @@ public abstract class Cliente implements Serializable {
      */
     public void setPerfil(final Perfil perfil) {
         this.perfil = perfil;
+    }
+
+    public List<ServicoCliente> getServicoClienteList() {
+        return servicoClienteList;
+    }
+
+    public void setServicoClienteList(List<ServicoCliente> servicoClienteList) {
+        this.servicoClienteList = servicoClienteList;
     }
 
     @Override
