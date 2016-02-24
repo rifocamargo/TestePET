@@ -1,6 +1,7 @@
-/TestePETDAO/target/
-/TestePETDAO/.settings/
-/.settings/
 *.project
 *.classpath
+/.settings/
+/TestePETDAO/target/
+/TestePETDAO/.settings/
 /TestePETService/target/
+/TestePETService/.settings/
