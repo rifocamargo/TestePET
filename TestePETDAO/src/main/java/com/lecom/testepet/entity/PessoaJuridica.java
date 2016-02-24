@@ -116,6 +116,7 @@ public class PessoaJuridica extends Cliente implements Serializable {
 	@Override
 	public String toString() {
 		return "PessoaJuridica [cnpjPessoaJuridica=" + cnpjPessoaJuridica + ", getIdCliente()=" + getIdCliente()
-				+ ", getNomeCliente()=" + getNomeCliente() + "]";
+				+ ", getNomeCliente()=" + getNomeCliente() + ", getPerfil()=" + getPerfil() + "]";
 	}
+
 }

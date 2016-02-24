@@ -45,4 +45,13 @@ public class PessoaFisicaBean extends ClienteBean implements Serializable {
         return super.build(cliente);
     }
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "PessoaFisicaBean [pessoaFisicaCpf=" + pessoaFisicaCpf + ", getNomeCliente()=" + getNomeCliente()
+				+ ", getPerfilBean()=" + getPerfilBean() + ", getIdCliente()=" + getIdCliente() + "]";
+	}
+
 }

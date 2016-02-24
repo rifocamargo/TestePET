@@ -43,4 +43,14 @@ public class ServicoPessoaJuridicaBean extends ServicoClienteBean {
         return new ServicoClientePK(cliente, servico);
     }
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "ServicoPessoaJuridicaBean [cnpjPessoaJuridica=" + cnpjPessoaJuridica + ", getIdCliente()="
+				+ getIdCliente() + ", getIdServico()=" + getIdServico() + ", getDataInicio()=" + getDataInicio()
+				+ ", getDataFim()=" + getDataFim() + ", getValor()=" + getValor() + "]";
+	}
+
 }

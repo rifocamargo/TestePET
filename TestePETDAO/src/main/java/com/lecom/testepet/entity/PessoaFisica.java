@@ -115,8 +115,9 @@ public class PessoaFisica extends Cliente implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return "PessoaFisica [pessoaFisicaCpf=" + pessoaFisicaCpf + ", getIdCliente()=" + getIdCliente()
-				+ ", getNomeCliente()=" + getNomeCliente() + "]";
+		return "PessoaFisica [pessoaFisicaCpf=" + pessoaFisicaCpf + ", servicoPessoaFisicaList="
+				+ servicoPessoaFisicaList + ", getIdCliente()=" + getIdCliente() + ", getNomeCliente()="
+				+ getNomeCliente() + ", getPerfil()=" + getPerfil() + "]";
 	}
 
 }

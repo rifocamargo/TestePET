@@ -26,6 +26,7 @@ public class ServicoServiceImpl implements ServicoService {
     @Override
     public void save(final ServicoBean servicoBean) {
     	LOGGER.info("Save Servico begin");
+    	LOGGER.info("Saving: {}", servicoBean);
         servicoDao.save(servicoBean.buildEntity());
         LOGGER.info("Save Servico end");
     }

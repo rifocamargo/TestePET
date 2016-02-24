@@ -49,7 +49,7 @@ public class ClienteServiceImplTest {
         perfilBeanOuro.setIdPerfil(1);
         
         final PerfilBean perfilBeanPrata = new PerfilBean();
-        perfilBeanOuro.setIdPerfil(2);
+        perfilBeanPrata.setIdPerfil(2);
         
         pessoaFisicaBean.setNomeCliente("Teste Insert PF");
         pessoaFisicaBean.setPessoaFisicaCpf("123.456.789-12");
@@ -67,9 +67,6 @@ public class ClienteServiceImplTest {
         
         final Cliente cliente = pessoaFisicaBean.buildEntity();
         cliente.setIdCliente(1);
-        cliente.getPerfil().setNomePerfil("Ouro");
-        cliente.getPerfil().setDescricaoPerfil("Desc Ouro");
-        cliente.getPerfil().setPctDescontoPerfil(1.2d);
         PowerMockito.when(clienteDao.find(Mockito.any())).thenReturn(cliente);
         
         final PessoaFisicaBean clienteBean = (PessoaFisicaBean) clienteService.find(pessoaFisicaBean);
@@ -86,9 +83,6 @@ public class ClienteServiceImplTest {
         
         final Cliente cliente = pessoaJuridicaBean.buildEntity();
         cliente.setIdCliente(1);
-        cliente.getPerfil().setNomePerfil("Ouro");
-        cliente.getPerfil().setDescricaoPerfil("Desc Ouro");
-        cliente.getPerfil().setPctDescontoPerfil(1.2d);
         PowerMockito.when(clienteDao.find(Mockito.any())).thenReturn(cliente);
         
         final PessoaJuridicaBean clienteBean = (PessoaJuridicaBean) clienteService.find(pessoaJuridicaBean);

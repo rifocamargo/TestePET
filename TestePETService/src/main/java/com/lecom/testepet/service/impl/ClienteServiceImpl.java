@@ -26,6 +26,7 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public void save(final ClienteBean clienteBean) {
     	LOGGER.info("Save Cliente begin");
+    	LOGGER.info("Saving: {}", clienteBean);
         clienteDao.save(clienteBean.buildEntity());
         LOGGER.info("Save Cliente end");
     }

@@ -5,8 +5,9 @@
  */
 package com.lecom.testepet.bean;
 
-import com.lecom.testepet.entity.Perfil;
 import java.io.Serializable;
+
+import com.lecom.testepet.entity.Perfil;
 
 /**
  *
@@ -27,31 +28,40 @@ public class PerfilBean implements Serializable {
     public PerfilBean() {
     }
 
-    public PerfilBean(Integer idPerfil, String nomePerfil, String descricaoPerfil, double pctDescontoPerfil) {
+    public PerfilBean(final Integer idPerfil, final String nomePerfil, final String descricaoPerfil, final double pctDescontoPerfil) {
         this.idPerfil = idPerfil;
         this.nomePerfil = nomePerfil;
         this.descricaoPerfil = descricaoPerfil;
         this.pctDescontoPerfil = pctDescontoPerfil;
     }
 
-    public void setIdPerfil(Integer idPerfil) {
+    public void setIdPerfil(final Integer idPerfil) {
         this.idPerfil = idPerfil;
     }
 
-    public void setNomePerfil(String nomePerfil) {
+    public void setNomePerfil(final String nomePerfil) {
         this.nomePerfil = nomePerfil;
     }
 
-    public void setDescricaoPerfil(String descricaoPerfil) {
+    public void setDescricaoPerfil(final String descricaoPerfil) {
         this.descricaoPerfil = descricaoPerfil;
     }
 
-    public void setPctDescontoPerfil(double pctDescontoPerfil) {
+    public void setPctDescontoPerfil(final double pctDescontoPerfil) {
         this.pctDescontoPerfil = pctDescontoPerfil;
     }
 
     public Perfil buildEntity() {
         return new Perfil(idPerfil, nomePerfil, descricaoPerfil, pctDescontoPerfil);
     }
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "PerfilBean [idPerfil=" + idPerfil + ", nomePerfil=" + nomePerfil + ", descricaoPerfil="
+				+ descricaoPerfil + ", pctDescontoPerfil=" + pctDescontoPerfil + "]";
+	}
 
 }

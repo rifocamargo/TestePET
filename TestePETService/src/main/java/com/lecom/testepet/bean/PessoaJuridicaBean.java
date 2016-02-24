@@ -36,4 +36,13 @@ public class PessoaJuridicaBean extends ClienteBean implements Serializable {
         this.cnpjPessoaJuridica = pessoaFisica.getCnpjPessoaJuridica();
         return this;
     }
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "PessoaJuridicaBean [cnpjPessoaJuridica=" + cnpjPessoaJuridica + ", getNomeCliente()=" + getNomeCliente()
+				+ ", getPerfilBean()=" + getPerfilBean() + ", getIdCliente()=" + getIdCliente() + "]";
+	}
 }

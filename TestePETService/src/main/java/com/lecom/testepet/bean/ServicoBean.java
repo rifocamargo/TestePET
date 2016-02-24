@@ -5,8 +5,9 @@
  */
 package com.lecom.testepet.bean;
 
-import com.lecom.testepet.entity.Servico;
 import java.io.Serializable;
+
+import com.lecom.testepet.entity.Servico;
 
 /**
  *
@@ -25,16 +26,16 @@ public class ServicoBean implements Serializable {
     public ServicoBean() {
     }
 
-    public ServicoBean(Integer idServico) {
+    public ServicoBean(final Integer idServico) {
         this.idServico = idServico;
     }
 
-    public ServicoBean(String nomeServico, String descricaoServico) {
+    public ServicoBean(final String nomeServico, final String descricaoServico) {
         this.nomeServico = nomeServico;
         this.descricaoServico = descricaoServico;
     }
 
-    public ServicoBean(Integer idServico, String nomeServico, String descricaoServico) {
+    public ServicoBean(final Integer idServico, final String nomeServico, final String descricaoServico) {
         this(idServico);
         this.nomeServico = nomeServico;
         this.descricaoServico = descricaoServico;
@@ -44,7 +45,7 @@ public class ServicoBean implements Serializable {
         return idServico;
     }
 
-    public void setIdServico(Integer idServico) {
+    public void setIdServico(final Integer idServico) {
         this.idServico = idServico;
     }
 
@@ -52,7 +53,7 @@ public class ServicoBean implements Serializable {
         return nomeServico;
     }
 
-    public void setNomeServico(String nomeServico) {
+    public void setNomeServico(final String nomeServico) {
         this.nomeServico = nomeServico;
     }
 
@@ -60,7 +61,7 @@ public class ServicoBean implements Serializable {
         return descricaoServico;
     }
 
-    public void setDescricaoServico(String descricaoServico) {
+    public void setDescricaoServico(final String descricaoServico) {
         this.descricaoServico = descricaoServico;
     }
 
@@ -74,5 +75,14 @@ public class ServicoBean implements Serializable {
         this.descricaoServico = servico.getDescricaoServico();
         return this;
     }
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "ServicoBean [idServico=" + idServico + ", nomeServico=" + nomeServico + ", descricaoServico="
+				+ descricaoServico + "]";
+	}
 
 }
