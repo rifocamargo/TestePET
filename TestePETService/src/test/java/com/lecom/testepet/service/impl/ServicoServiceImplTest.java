@@ -5,10 +5,6 @@
  */
 package com.lecom.testepet.service.impl;
 
-import com.lecom.testepet.bean.ServicoBean;
-import com.lecom.testepet.dao.ServicoDao;
-import com.lecom.testepet.entity.Servico;
-import com.lecom.testepet.service.ServicoService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,6 +16,11 @@ import org.powermock.api.mockito.PowerMockito;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.lecom.testepet.bean.ServicoBean;
+import com.lecom.testepet.dao.ServicoDao;
+import com.lecom.testepet.entity.Servico;
+import com.lecom.testepet.service.ServicoService;
 
 /**
  *
@@ -46,7 +47,7 @@ public class ServicoServiceImplTest {
 
     @Test
     public void saveFindServicoTest() {
-        LOGGER.info("saveServicoTest");
+        LOGGER.info("saveFindServicoTest");
         servicosService.save(servicoBean);
         
         final Servico servico = servicoBean.buildEntity();

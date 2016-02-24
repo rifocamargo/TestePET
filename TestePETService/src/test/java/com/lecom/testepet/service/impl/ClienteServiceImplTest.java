@@ -5,13 +5,6 @@
  */
 package com.lecom.testepet.service.impl;
 
-import com.lecom.testepet.bean.ClienteBean;
-import com.lecom.testepet.bean.PerfilBean;
-import com.lecom.testepet.bean.PessoaFisicaBean;
-import com.lecom.testepet.bean.PessoaJuridicaBean;
-import com.lecom.testepet.dao.ClienteDao;
-import com.lecom.testepet.entity.Cliente;
-import com.lecom.testepet.service.ClienteService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,6 +16,13 @@ import org.powermock.api.mockito.PowerMockito;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.lecom.testepet.bean.PerfilBean;
+import com.lecom.testepet.bean.PessoaFisicaBean;
+import com.lecom.testepet.bean.PessoaJuridicaBean;
+import com.lecom.testepet.dao.ClienteDao;
+import com.lecom.testepet.entity.Cliente;
+import com.lecom.testepet.service.ClienteService;
 
 /**
  *
@@ -62,7 +62,7 @@ public class ClienteServiceImplTest {
 
     @Test
     public void saveFindPessoaFisicaTest() {        
-        LOGGER.info("savePessoaFisicaTest");        
+        LOGGER.info("saveFindPessoaFisicaTest");        
         clienteService.save(pessoaFisicaBean);
         
         final Cliente cliente = pessoaFisicaBean.buildEntity();
@@ -81,7 +81,7 @@ public class ClienteServiceImplTest {
     
     @Test
     public void saveFindPessoaJuridicaTest() {        
-        LOGGER.info("savePessoaJuridicaTest");        
+        LOGGER.info("saveFindPessoaJuridicaTest");        
         clienteService.save(pessoaJuridicaBean);
         
         final Cliente cliente = pessoaJuridicaBean.buildEntity();
