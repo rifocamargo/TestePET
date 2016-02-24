@@ -5,9 +5,10 @@
  */
 package com.lecom.testepet.bean;
 
+import java.io.Serializable;
+
 import com.lecom.testepet.entity.Cliente;
 import com.lecom.testepet.entity.PessoaJuridica;
-import java.io.Serializable;
 
 public class PessoaJuridicaBean extends ClienteBean implements Serializable {
 
@@ -19,13 +20,13 @@ public class PessoaJuridicaBean extends ClienteBean implements Serializable {
         return cnpjPessoaJuridica;
     }
 
-    public void setCnpjPessoaJuridica(String cnpjPessoaJuridica) {
+    public void setCnpjPessoaJuridica(final String cnpjPessoaJuridica) {
         this.cnpjPessoaJuridica = cnpjPessoaJuridica;
     }
 
     @Override
     public PessoaJuridica buildEntity() {
-        return new PessoaJuridica(super.getNomeCliente(), super.getPerfilBean().buildEntity(), cnpjPessoaJuridica);
+        return new PessoaJuridica(super.getNomeCliente(), super.getPerfilBean().buildEntity(), this.cnpjPessoaJuridica);
     }
 
     @Override

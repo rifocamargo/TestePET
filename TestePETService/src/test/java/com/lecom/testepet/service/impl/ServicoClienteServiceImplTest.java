@@ -5,18 +5,8 @@
  */
 package com.lecom.testepet.service.impl;
 
-import com.lecom.testepet.bean.PerfilBean;
-import com.lecom.testepet.bean.PessoaFisicaBean;
-import com.lecom.testepet.bean.PessoaJuridicaBean;
-import com.lecom.testepet.bean.ServicoPessoaFisicaBean;
-import com.lecom.testepet.bean.ServicoPessoaJuridicaBean;
-import com.lecom.testepet.dao.ClienteDao;
-import com.lecom.testepet.dao.ServicoClienteDao;
-import com.lecom.testepet.entity.Cliente;
-import com.lecom.testepet.entity.ServicoCliente;
-import com.lecom.testepet.service.ClienteService;
-import com.lecom.testepet.service.ServicoClienteService;
 import java.util.Date;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,6 +18,12 @@ import org.powermock.api.mockito.PowerMockito;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.lecom.testepet.bean.ServicoPessoaFisicaBean;
+import com.lecom.testepet.bean.ServicoPessoaJuridicaBean;
+import com.lecom.testepet.dao.ServicoClienteDao;
+import com.lecom.testepet.entity.ServicoCliente;
+import com.lecom.testepet.service.ServicoClienteService;
 
 /**
  *
@@ -69,8 +65,9 @@ public class ServicoClienteServiceImplTest {
     public void saveFindServicoPessoaFisicaTest() {
         LOGGER.info("saveFindServicoPessoaFisicaTest");
         servicoClienteService.save(servicoPessoaFisicaBean);
-
+	
         final ServicoCliente servicoCliente = servicoPessoaFisicaBean.buildEntity();
+        servicoCliente.getServicoClientePK().getCliente().setNomeCliente("Nome Teste");
         PowerMockito.when(servicoClienteDao.find(Mockito.any())).thenReturn(servicoCliente);
 
         final ServicoPessoaFisicaBean clienteBean = (ServicoPessoaFisicaBean) servicoClienteService.find(servicoPessoaFisicaBean);
@@ -86,6 +83,7 @@ public class ServicoClienteServiceImplTest {
         servicoClienteService.save(servicoPessoaJuridicaBean);
 
         final ServicoCliente servicoCliente = servicoPessoaJuridicaBean.buildEntity();
+        servicoCliente.getServicoClientePK().getCliente().setNomeCliente("Nome Teste");
         PowerMockito.when(servicoClienteDao.find(Mockito.any())).thenReturn(servicoCliente);
 
         final ServicoPessoaJuridicaBean clienteBean = (ServicoPessoaJuridicaBean) servicoClienteService.find(servicoPessoaJuridicaBean);

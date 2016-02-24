@@ -7,8 +7,8 @@ package com.lecom.testepet.entity;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.CascadeType;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -25,80 +25,97 @@ import javax.validation.constraints.NotNull;
 @PrimaryKeyJoinColumn(name = "id_cliente")
 public class PessoaJuridica extends Cliente implements Serializable {
 
-    private static final long serialVersionUID = -910091967044863918L;
+	private static final long serialVersionUID = -910091967044863918L;
 
-    @NotNull
-    @Column(name = "cnpj_pessoa_juridica")
-    private String cnpjPessoaJuridica;
+	@NotNull
+	@Column(name = "cnpj_pessoa_juridica")
+	private String cnpjPessoaJuridica;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "servicoClientePK.cliente")
-    private List<ServicoPessoaJuridica> servicoPessoaJuridicaList;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "servicoClientePK.cliente")
+	private List<ServicoPessoaJuridica> servicoPessoaJuridicaList;
 
-    /**
-     * Default Constructor
-     */
-    public PessoaJuridica() {
-    }
+	/**
+	 * Default Constructor
+	 */
+	public PessoaJuridica() {
+	}
 
-    /**
-     * @param idCliente
-     */
-    public PessoaJuridica(final Integer idCliente) {
-        super(idCliente);
-    }
+	/**
+	 * @param idCliente
+	 */
+	public PessoaJuridica(final Integer idCliente) {
+		super(idCliente);
+	}
 
-    /**
-     * @param nomeCliente
-     * @param perfil
-     * @param cnpjPessoaJuridica
-     */
-    public PessoaJuridica(final String nomeCliente, final Perfil perfil, final String cnpjPessoaJuridica) {
-        super(nomeCliente, perfil);
-        this.cnpjPessoaJuridica = cnpjPessoaJuridica;
-    }
+	/**
+	 * @param idCliente
+	 * @param cnpjPessoaJuridica
+	 */
+	public PessoaJuridica(final Integer idCliente, final String cnpjPessoaJuridica) {
+		super(idCliente);
+		this.cnpjPessoaJuridica = cnpjPessoaJuridica;
+	}
 
-    /**
-     * @param idCliente
-     * @param nomeCliente
-     * @param perfil
-     * @param cnpjPessoaJuridica
-     */
-    public PessoaJuridica(final Integer idCliente, final String nomeCliente, final Perfil perfil,
-            final String cnpjPessoaJuridica) {
-        super(idCliente, nomeCliente, perfil);
-        this.cnpjPessoaJuridica = cnpjPessoaJuridica;
-    }
+	/**
+	 * @param nomeCliente
+	 * @param perfil
+	 * @param cnpjPessoaJuridica
+	 */
+	public PessoaJuridica(final String nomeCliente, final Perfil perfil, final String cnpjPessoaJuridica) {
+		super(nomeCliente, perfil);
+		this.cnpjPessoaJuridica = cnpjPessoaJuridica;
+	}
 
-    /**
-     * @return the cnpjPessoaJuridica
-     */
-    public String getCnpjPessoaJuridica() {
-        return cnpjPessoaJuridica;
-    }
+	/**
+	 * @param idCliente
+	 * @param nomeCliente
+	 * @param perfil
+	 * @param cnpjPessoaJuridica
+	 */
+	public PessoaJuridica(final Integer idCliente, final String nomeCliente, final Perfil perfil,
+			final String cnpjPessoaJuridica) {
+		super(idCliente, nomeCliente, perfil);
+		this.cnpjPessoaJuridica = cnpjPessoaJuridica;
+	}
 
-    /**
-     * @param cnpjPessoaJuridica the cnpjPessoaJuridica to set
-     */
-    public void setCnpjPessoaJuridica(final String cnpjPessoaJuridica) {
-        this.cnpjPessoaJuridica = cnpjPessoaJuridica;
-    }
+	/**
+	 * @return the cnpjPessoaJuridica
+	 */
+	public String getCnpjPessoaJuridica() {
+		return cnpjPessoaJuridica;
+	}
 
-    public List<ServicoPessoaJuridica> getServicoPessoaJuridicaList() {
-        return servicoPessoaJuridicaList;
-    }
+	/**
+	 * @param cnpjPessoaJuridica
+	 *            the cnpjPessoaJuridica to set
+	 */
+	public void setCnpjPessoaJuridica(final String cnpjPessoaJuridica) {
+		this.cnpjPessoaJuridica = cnpjPessoaJuridica;
+	}
 
-    public void setServicoPessoaJuridicaList(List<ServicoPessoaJuridica> servicoPessoaJuridicaList) {
-        this.servicoPessoaJuridicaList = servicoPessoaJuridicaList;
-    }
+	/**
+	 * @return the servicoPessoaJuridicaList
+	 */
+	public List<ServicoPessoaJuridica> getServicoPessoaJuridicaList() {
+		return servicoPessoaJuridicaList;
+	}
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return "PessoaJuridica [cnpjPessoaJuridica=" + cnpjPessoaJuridica + ", getIdCliente()=" + getIdCliente()
-                + ", getNomeCliente()=" + getNomeCliente() + "]";
-    }
+	/**
+	 * @param servicoPessoaJuridicaList
+	 *            the servicoPessoaJuridicaList to set
+	 */
+	public void setServicoPessoaJuridicaList(final List<ServicoPessoaJuridica> servicoPessoaJuridicaList) {
+		this.servicoPessoaJuridicaList = servicoPessoaJuridicaList;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "PessoaJuridica [cnpjPessoaJuridica=" + cnpjPessoaJuridica + ", getIdCliente()=" + getIdCliente()
+				+ ", getNomeCliente()=" + getNomeCliente() + "]";
+	}
 }

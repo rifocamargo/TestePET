@@ -24,13 +24,13 @@ public class ServicoPessoaJuridicaBean extends ServicoClienteBean {
         return cnpjPessoaJuridica;
     }
 
-    public void setCnpjPessoaJuridica(String cnpjPessoaJuridica) {
+    public void setCnpjPessoaJuridica(final String cnpjPessoaJuridica) {
         this.cnpjPessoaJuridica = cnpjPessoaJuridica;
     }
     
     @Override
     public ServicoCliente buildEntity() {
-        final PessoaJuridica cliente = new PessoaJuridica(super.getIdCliente());
+        final PessoaJuridica cliente = new PessoaJuridica(super.getIdCliente(), this.cnpjPessoaJuridica);
         final Servico servico = new Servico(super.getIdServico());
         final ServicoClientePK servicoClientePK = new ServicoClientePK(cliente, servico);
         return new ServicoPessoaJuridica(servicoClientePK, super.getDataInicio(), super.getDataFim(), super.getValor());

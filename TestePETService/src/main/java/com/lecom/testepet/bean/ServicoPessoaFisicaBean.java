@@ -24,13 +24,13 @@ public class ServicoPessoaFisicaBean extends ServicoClienteBean {
         return pessoaFisicaCpf;
     }
 
-    public void setPessoaFisicaCpf(String pessoaFisicaCpf) {
+    public void setPessoaFisicaCpf(final String pessoaFisicaCpf) {
         this.pessoaFisicaCpf = pessoaFisicaCpf;
     }
 
     @Override
     public ServicoCliente buildEntity() {
-        final PessoaFisica cliente = new PessoaFisica(super.getIdCliente());
+        final PessoaFisica cliente = new PessoaFisica(super.getIdCliente(), this.pessoaFisicaCpf);
         final Servico servico = new Servico(super.getIdServico());
         final ServicoClientePK servicoClientePK = new ServicoClientePK(cliente, servico);
         return new ServicoPessoaFisica(servicoClientePK, super.getDataInicio(), super.getDataFim(), super.getValor());

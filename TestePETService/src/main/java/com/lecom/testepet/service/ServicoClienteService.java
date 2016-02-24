@@ -20,5 +20,10 @@ public interface ServicoClienteService {
      */
     public void save(final ServicoClienteBean servicoClienteBean);
     
+    /**
+     * Find the ServicoCliente
+     * @param servicoClienteBean
+     * @return servicoClienteBean
+     */
     public ServicoClienteBean find(final ServicoClienteBean servicoClienteBean);
 }

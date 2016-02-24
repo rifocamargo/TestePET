@@ -18,7 +18,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlTransient;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
@@ -133,7 +132,7 @@ public class Servico implements Serializable {
         return servicoPessoaJuridicaList;
     }
 
-    public void setServicoPessoaJuridicaList(List<ServicoPessoaJuridica> servicoPessoaJuridicaList) {
+    public void setServicoPessoaJuridicaList(final List<ServicoPessoaJuridica> servicoPessoaJuridicaList) {
         this.servicoPessoaJuridicaList = servicoPessoaJuridicaList;
     }
 
@@ -141,7 +140,7 @@ public class Servico implements Serializable {
         return servicoPessoaFisicaList;
     }
 
-    public void setServicoPessoaFisicaList(List<ServicoPessoaFisica> servicoPessoaFisicaList) {
+    public void setServicoPessoaFisicaList(final List<ServicoPessoaFisica> servicoPessoaFisicaList) {
         this.servicoPessoaFisicaList = servicoPessoaFisicaList;
     }
 
@@ -152,8 +151,6 @@ public class Servico implements Serializable {
 
     @Override
     public boolean equals(final Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are
-        // not set
         if (!(object instanceof Servico)) {
             return false;
         }
@@ -164,7 +161,7 @@ public class Servico implements Serializable {
 
     @Override
     public String toString() {
-        return "com.lecom.testepetdao.entity.Servico[ idServico=" + idServico + " ]";
+        return "Servico[ idServico=" + idServico + " ]";
     }
 
 }

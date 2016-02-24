@@ -6,7 +6,6 @@
 package com.lecom.testepet.entity;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -181,7 +180,7 @@ public class Perfil implements Serializable {
 
     @Override
     public String toString() {
-        return "com.lecom.testepetdao.entity.Perfil[ idPerfil=" + idPerfil + " ]";
+        return "Perfil[ idPerfil=" + idPerfil + " ]";
     }
 
 }

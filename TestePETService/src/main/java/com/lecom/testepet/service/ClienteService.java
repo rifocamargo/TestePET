@@ -14,11 +14,16 @@ import com.lecom.testepet.bean.ClienteBean;
 public interface ClienteService {
 
     /**
-     * Save the Client
+     * Save the Cliente
      *
      * @param clienteBean
      */
     public void save(final ClienteBean clienteBean);
     
+    /**
+     * Find the Cliente
+     * @param clienteBean
+     * @return clienteBean
+     */
     public ClienteBean find(final ClienteBean clienteBean);
 }

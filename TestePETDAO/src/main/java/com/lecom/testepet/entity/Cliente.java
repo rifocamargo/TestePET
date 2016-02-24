@@ -140,7 +140,7 @@ public abstract class Cliente implements Serializable {
 
     @Override
     public String toString() {
-        return "com.lecom.testepetdao.entity.Cliente[ idCliente=" + idCliente + " ]";
+        return "Cliente[ idCliente=" + idCliente + " ]";
     }
 
 }
