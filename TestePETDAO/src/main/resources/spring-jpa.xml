@@ -10,14 +10,14 @@
                            http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd"
        default-autowire="no">
 
-    <context:component-scan base-package="com.lecom.fvsoapintegrationdao.dao"/>
+    <context:component-scan base-package="com.lecom.testepet.dao"/>
     <tx:annotation-driven />
     
     <!-- JPA configuration -->
     <bean id="entityManagerFactory"
           class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml" />
-        <property name="persistenceUnitName" value="FVSoapIntegrationPU" />
+        <property name="persistenceUnitName" value="TestePETPU" />
         <property name="dataSource" ref="dataSource" />  
         <property name="jpaDialect" ref="jpaDialect"/>
         <property name="jpaVendorAdapter">

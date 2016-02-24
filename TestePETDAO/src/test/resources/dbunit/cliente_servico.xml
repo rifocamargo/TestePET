@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<dataset>
-  <cliente_servico id_cliente="1" id_servico="1" data_inicio="2016-01-01 00:00:00.0" data_fim="2017-01-01 00:00:00.0" valor="1234.00"/>
-  <cliente_servico id_cliente="2" id_servico="2" data_inicio="2016-01-01 00:00:00.0" data_fim="2017-01-01 00:00:00.0" valor="4321.00"/>
-  <cliente_servico id_cliente="3" id_servico="3" data_inicio="2016-01-01 00:00:00.0" data_fim="2017-01-01 00:00:00.0" valor="5678.00"/>
-  <cliente_servico id_cliente="4" id_servico="4" data_inicio="2016-01-01 00:00:00.0" data_fim="2017-01-01 00:00:00.0" valor="8765.00"/>
-</dataset>

@@ -12,7 +12,7 @@
        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd"
        default-autowire="no" xmlns:util="http://www.springframework.org/schema/util">
     
-    <context:component-scan base-package="com.lecom.testepetdao.dao"/>
+    <context:component-scan base-package="com.lecom.testepet.dao"/>
     <tx:annotation-driven />
 
     <!-- JPA configuration -->
@@ -59,7 +59,7 @@
     
     <!-- END - JPA configuration --> 
      
-    <bean id="dbUnitStarter" class="com.lecom.testepetdao.dao.util.DbUnitStarter">
+    <bean id="dbUnitStarter" class="com.lecom.testepet.dao.util.DbUnitStarter">
         <property name="dataSource" ref="dataSource" />
         <property name="dataSetLocations">
             <list value-type="org.springframework.core.io.Resource">		
@@ -68,7 +68,8 @@
                 <value>classpath:dbunit/cliente.xml</value>
                 <value>classpath:dbunit/pessoa_fisica.xml</value>
                 <value>classpath:dbunit/pessoa_juridica.xml</value>
-                <value>classpath:dbunit/cliente_servico.xml</value>
+                <value>classpath:dbunit/servico_pessoa_fisica.xml</value>
+                <value>classpath:dbunit/servico_pessoa_juridica.xml</value>
             </list>
         </property>
     </bean>
