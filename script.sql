@@ -100,27 +100,54 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `teste_pet`.`cliente_servico`
+-- Table `teste_pet`.`servico_pessoa_juridica`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `teste_pet`.`cliente_servico` ;
+DROP TABLE IF EXISTS `teste_pet`.`servico_pessoa_juridica` ;
 
-CREATE TABLE IF NOT EXISTS `teste_pet`.`cliente_servico` (
-  `id_cliente` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `teste_pet`.`servico_pessoa_juridica` (
   `id_servico` INT NOT NULL,
+  `id_cliente` INT NOT NULL,
   `data_inicio` DATETIME NOT NULL,
   `data_fim` DATETIME NOT NULL,
   `valor` DECIMAL(6,2) NOT NULL,
-  PRIMARY KEY (`id_cliente`, `id_servico`),
-  INDEX `fk_cliente_has_servico_servico1_idx` (`id_servico` ASC),
-  INDEX `fk_cliente_has_servico_cliente1_idx` (`id_cliente` ASC),
-  CONSTRAINT `fk_cliente_has_servico_cliente1`
-    FOREIGN KEY (`id_cliente`)
-    REFERENCES `teste_pet`.`cliente` (`id_cliente`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_cliente_has_servico_servico1`
+  PRIMARY KEY (`id_servico`, `id_cliente`),
+  INDEX `fk_servico_has_pessoa_juridica_pessoa_juridica1_idx` (`id_cliente` ASC),
+  INDEX `fk_servico_has_pessoa_juridica_servico1_idx` (`id_servico` ASC),
+  CONSTRAINT `fk_servico_has_pessoa_juridica_servico1`
     FOREIGN KEY (`id_servico`)
     REFERENCES `teste_pet`.`servico` (`id_servico`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_servico_has_pessoa_juridica_pessoa_juridica1`
+    FOREIGN KEY (`id_cliente`)
+    REFERENCES `teste_pet`.`pessoa_juridica` (`id_cliente`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `teste_pet`.`servico_pessoa_fisica`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `teste_pet`.`servico_pessoa_fisica` ;
+
+CREATE TABLE IF NOT EXISTS `teste_pet`.`servico_pessoa_fisica` (
+  `id_servico` INT NOT NULL,
+  `id_cliente` INT NOT NULL,
+  `data_inicio` DATETIME NOT NULL,
+  `data_fim` DATETIME NOT NULL,
+  `valor` DECIMAL(6,2) NOT NULL,
+  PRIMARY KEY (`id_servico`, `id_cliente`),
+  INDEX `fk_servico_has_pessoa_fisica_pessoa_fisica1_idx` (`id_cliente` ASC),
+  INDEX `fk_servico_has_pessoa_fisica_servico1_idx` (`id_servico` ASC),
+  CONSTRAINT `fk_servico_has_pessoa_fisica_servico1`
+    FOREIGN KEY (`id_servico`)
+    REFERENCES `teste_pet`.`servico` (`id_servico`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_servico_has_pessoa_fisica_pessoa_fisica1`
+    FOREIGN KEY (`id_cliente`)
+    REFERENCES `teste_pet`.`pessoa_fisica` (`id_cliente`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -129,6 +156,7 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
 
 
 INSERT INTO `teste_pet`.`perfil` (`nome_perfil`, `descricao_perfil`, `pct_desconto_perfil`) VALUES ('Ouro', 'Ouro', '10');
@@ -150,7 +178,9 @@ INSERT INTO `teste_pet`.`servico` (`nome_servico`, `descricao_servico`) VALUES (
 INSERT INTO `teste_pet`.`servico` (`nome_servico`, `descricao_servico`) VALUES ('Database', 'Banco de dados');
 INSERT INTO `teste_pet`.`servico` (`nome_servico`, `descricao_servico`) VALUES ('Desenvolvimento', 'Desenvolvimento de softwares');
 
-INSERT INTO `teste_pet`.`cliente_servico` (`id_cliente`, `id_servico`, `data_inicio`, `data_fim`, `valor`) VALUES ('1', '1', '2016-01-01 00:00:00', '2017-01-01 00:00:00', '1234');
-INSERT INTO `teste_pet`.`cliente_servico` (`id_cliente`, `id_servico`, `data_inicio`, `data_fim`, `valor`) VALUES ('2', '2', '2016-01-01 00:00:00', '2017-01-01 00:00:00', '4321');
-INSERT INTO `teste_pet`.`cliente_servico` (`id_cliente`, `id_servico`, `data_inicio`, `data_fim`, `valor`) VALUES ('3', '3', '2016-01-01 00:00:00', '2017-01-01 00:00:00', '5678');
-INSERT INTO `teste_pet`.`cliente_servico` (`id_cliente`, `id_servico`, `data_inicio`, `data_fim`, `valor`) VALUES ('4', '4', '2016-01-01 00:00:00', '2017-01-01 00:00:00', '8765');
+INSERT INTO `teste_pet`.`servico_pessoa_fisica` (`id_servico`, `id_cliente`, `data_inicio`, `data_fim`, `valor`) VALUES ('1', '1', '2016-01-01 00:00:00', '2017-01-01 00:00:00', '1234');
+INSERT INTO `teste_pet`.`servico_pessoa_fisica` (`id_servico`, `id_cliente`, `data_inicio`, `data_fim`, `valor`) VALUES ('2', '3', '2016-01-01 00:00:00', '2017-01-01 00:00:00', '4321');
+INSERT INTO `teste_pet`.`servico_pessoa_juridica` (`id_servico`, `id_cliente`, `data_inicio`, `data_fim`, `valor`) VALUES ('3', '2', '2016-01-01 00:00:00', '2017-01-01 00:00:00', '1234');
+INSERT INTO `teste_pet`.`servico_pessoa_juridica` (`id_servico`, `id_cliente`, `data_inicio`, `data_fim`, `valor`) VALUES ('4', '4', '2016-01-01 00:00:00', '2017-01-01 00:00:00', '4321');
+
+
