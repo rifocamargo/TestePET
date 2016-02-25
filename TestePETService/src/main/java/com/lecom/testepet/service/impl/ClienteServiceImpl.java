@@ -38,7 +38,7 @@ public class ClienteServiceImpl implements ClienteService {
     @Transactional(propagation = Propagation.REQUIRED)
     public ClienteBean find(final ClienteBean clienteBean) {
     	LOGGER.info("Find Cliente begin");
-        final Cliente cliente = clienteDao.find(clienteBean.getIdCliente());
+        final Cliente cliente = clienteDao.find(clienteBean.entityType(), clienteBean.getIdCliente());
         LOGGER.info("Found: {}", cliente);
         LOGGER.info("Find Cliente end");
         return clienteBean.build(cliente);

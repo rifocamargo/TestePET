@@ -23,6 +23,8 @@ public interface GenericDao<T> {
     void delete(final Object id);
 
     T find(final Object id);
+    
+    T find(final Class clazz, final Object id);
 
     T update(final T t); 
 }

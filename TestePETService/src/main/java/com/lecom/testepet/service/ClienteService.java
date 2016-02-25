@@ -19,9 +19,10 @@ public interface ClienteService {
      * @param clienteBean
      */
     public void save(final ClienteBean clienteBean);
-    
+
     /**
      * Find the Cliente
+     *
      * @param clienteBean
      * @return clienteBean
      */

@@ -10,7 +10,9 @@ import java.io.Serializable;
 import com.lecom.testepet.entity.Cliente;
 import com.lecom.testepet.entity.PessoaJuridica;
 import com.lecom.testepet.entity.ServicoCliente;
+import org.codehaus.jackson.annotate.JsonTypeName;
 
+@JsonTypeName("pessoaJuridica")
 public class PessoaJuridicaBean extends ClienteBean implements Serializable {
 
     private static final long serialVersionUID = 1544942947362249944L;
@@ -28,6 +30,11 @@ public class PessoaJuridicaBean extends ClienteBean implements Serializable {
     @Override
     public PessoaJuridica buildEntity() {
         return new PessoaJuridica(super.getNomeCliente(), super.getPerfilBean().buildEntity(), this.cnpjPessoaJuridica);
+    }
+    
+    @Override
+    public Class entityType() {
+        return PessoaJuridica.class;
     }
 
     @Override
@@ -48,4 +55,5 @@ public class PessoaJuridicaBean extends ClienteBean implements Serializable {
         return "PessoaJuridicaBean [cnpjPessoaJuridica=" + cnpjPessoaJuridica + ", getNomeCliente()=" + getNomeCliente()
                 + ", getPerfilBean()=" + getPerfilBean() + ", getIdCliente()=" + getIdCliente() + "]";
     }
+    
 }

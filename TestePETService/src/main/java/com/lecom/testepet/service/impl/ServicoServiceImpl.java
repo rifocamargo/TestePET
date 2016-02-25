@@ -14,6 +14,8 @@ import com.lecom.testepet.bean.ServicoBean;
 import com.lecom.testepet.dao.ServicoDao;
 import com.lecom.testepet.entity.Servico;
 import com.lecom.testepet.service.ServicoService;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ServicoServiceImpl implements ServicoService {
@@ -38,6 +40,16 @@ public class ServicoServiceImpl implements ServicoService {
         LOGGER.info("Found: {}", servico);
         LOGGER.info("Find Servico end");
         return servicoBean.build(servico);
+    }
+
+    @Override
+    public List<ServicoBean> findAll() {
+        final List<Servico> servicoList = servicoDao.findAll();
+        final List<ServicoBean> servicoBeanList = new ArrayList<>();
+        for (final Servico servico : servicoList) {
+            servicoBeanList.add(new ServicoBean().build(servico));
+        }
+        return servicoBeanList;
     }
 
 }

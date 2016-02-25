@@ -10,16 +10,15 @@ import java.util.ArrayList;
 import java.util.List;
 import org.codehaus.jackson.annotate.JsonSubTypes;
 import org.codehaus.jackson.annotate.JsonTypeInfo;
-import org.codehaus.jackson.annotate.JsonTypeInfo.Id;
 
 /**
  *
  * @author Ricardo
  */
-@JsonTypeInfo(use = Id.NONE)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({
-    @JsonSubTypes.Type(value = PessoaJuridicaBean.class, name = "pessoaJuridicaBean"),
-    @JsonSubTypes.Type(value = PessoaFisicaBean.class, name = "pessoaFisicaBean")})
+    @JsonSubTypes.Type(value = PessoaJuridicaBean.class, name = "pessoaJuridica"),
+    @JsonSubTypes.Type(value = PessoaFisicaBean.class, name = "pessoaFisica")})
 public abstract class ClienteBean {
 
     private Integer idCliente;
@@ -31,6 +30,8 @@ public abstract class ClienteBean {
     private final List<ServicoClienteBean> servicoClienteBeanList = new ArrayList<>();
 
     public abstract Cliente buildEntity();
+    
+    public abstract Class entityType();
 
     public ClienteBean build(final Cliente cliente) {
         this.idCliente = cliente.getIdCliente();

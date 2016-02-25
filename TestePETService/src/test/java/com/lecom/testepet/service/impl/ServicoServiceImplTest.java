@@ -21,6 +21,8 @@ import com.lecom.testepet.bean.ServicoBean;
 import com.lecom.testepet.dao.ServicoDao;
 import com.lecom.testepet.entity.Servico;
 import com.lecom.testepet.service.ServicoService;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -59,6 +61,30 @@ public class ServicoServiceImplTest {
         Assert.assertEquals(servicoBean.getIdServico(), servicoBean.getIdServico());
         Assert.assertEquals(servicoBean.getNomeServico(), servicoBean.getNomeServico());
         Assert.assertEquals(servicoBean.getDescricaoServico(), servicoBean.getDescricaoServico());
+    }
+    
+    @Test
+    public void findAllServicoTest() {
+        LOGGER.info("findAllServicoTest");
+        
+        final List<Servico> servicoList = new ArrayList<>();
+        for (int i = 0; i < 4; i++) {
+            servicoList.add(new Servico(i + 1, "Servico " + (i + 1), "Desc Servico " + (i + 1)));            
+        }
+        
+        PowerMockito.when(servicoDao.findAll()).thenReturn(servicoList);
+        
+        final List<ServicoBean> servicoBeanList = servicosService.findAll();
+        
+        Assert.assertFalse(servicoBeanList.isEmpty());
+        
+        int i = 1;
+        for (final ServicoBean bean : servicoBeanList) {
+            Assert.assertTrue(i == bean.getIdServico());
+            Assert.assertEquals("Servico " + i,bean.getNomeServico());
+            Assert.assertEquals("Desc Servico " + i,bean.getDescricaoServico());
+            i++;
+        }
     }
 
 }

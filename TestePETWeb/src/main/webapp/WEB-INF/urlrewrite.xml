@@ -14,6 +14,11 @@
         <from>^/cliente/find/services</from>
         <to type="forward" last="true">/service/cliente/find/services</to>
     </rule>
+    
+    <rule enabled="true">
+        <from>^/servico/find/all</from>
+        <to type="forward" last="true">/service/servico/find/all</to>
+    </rule>
 
 </urlrewrite>
 

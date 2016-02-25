@@ -37,7 +37,7 @@ public class ServicoPessoaFisicaBean extends ServicoClienteBean {
     public String toString() {
         return "ServicoPessoaFisicaBean [getIdCliente()=" + getIdCliente() + ", getIdServico()=" + getIdServico()
                 + ", getDataInicio()=" + getDataInicio() + ", getDataFim()=" + getDataFim() + ", getValor()=" + getValor() 
-                + ", getPctDescontoPerfil()=" + getPctDescontoPerfil() + ", getValorComDesconto()=" + getValorComDesconto()+ "]";
+                + ", getPctDescontoPerfil()=" + getPctDescontoPerfil() + ", getValorComDesconto()=" + getValorComDescontoPerfil()+ "]";
     }
 
 }

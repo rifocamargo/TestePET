@@ -21,13 +21,10 @@ import com.lecom.testepet.bean.PerfilBean;
 import com.lecom.testepet.bean.PessoaFisicaBean;
 import com.lecom.testepet.bean.PessoaJuridicaBean;
 import com.lecom.testepet.bean.ServicoClienteBean;
-import com.lecom.testepet.bean.ServicoPessoaJuridicaBean;
 import com.lecom.testepet.dao.ClienteDao;
-import com.lecom.testepet.entity.Cliente;
 import com.lecom.testepet.entity.PessoaFisica;
 import com.lecom.testepet.entity.PessoaJuridica;
 import com.lecom.testepet.entity.Servico;
-import com.lecom.testepet.entity.ServicoCliente;
 import com.lecom.testepet.entity.ServicoPessoaFisica;
 import com.lecom.testepet.entity.ServicoPessoaJuridica;
 import com.lecom.testepet.entity.pk.ServicoClientePK;
@@ -93,7 +90,7 @@ public class ClienteServiceImplTest {
             cliente.getServicoPessoaFisicaList().add(servicoPessoaFisica);
         }
         
-        PowerMockito.when(clienteDao.find(Mockito.any())).thenReturn(cliente);
+        PowerMockito.when(clienteDao.find(Mockito.any(Class.class), Mockito.any())).thenReturn(cliente);
 
         final PessoaFisicaBean clienteBean = (PessoaFisicaBean) clienteService.find(pessoaFisicaBean);
 
@@ -130,7 +127,7 @@ public class ClienteServiceImplTest {
             cliente.getServicoPessoaJuridicaList().add(servicoPessoaJuridica);
         }
         
-        PowerMockito.when(clienteDao.find(Mockito.any())).thenReturn(cliente);
+        PowerMockito.when(clienteDao.find(Mockito.any(Class.class), Mockito.any())).thenReturn(cliente);
 
         final PessoaJuridicaBean clienteBean = (PessoaJuridicaBean) clienteService.find(pessoaJuridicaBean);
         

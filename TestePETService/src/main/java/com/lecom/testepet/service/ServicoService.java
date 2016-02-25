@@ -6,6 +6,7 @@
 package com.lecom.testepet.service;
 
 import com.lecom.testepet.bean.ServicoBean;
+import java.util.List;
 
 /**
  *
@@ -27,4 +28,11 @@ public interface ServicoService {
      * @return ServicoBean
      */
     public ServicoBean find(final ServicoBean servicoBean);
+    
+    /**
+     * find the Servico
+     *
+     * @return List<ServicoBean>
+     */
+    public List<ServicoBean> findAll();
 }

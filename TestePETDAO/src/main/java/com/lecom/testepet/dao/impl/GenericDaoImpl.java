@@ -59,6 +59,11 @@ public abstract class GenericDaoImpl<T> implements GenericDao<T> {
     public T find(final Object id) {
         return (T) this.entityManager.find(type, id);
     }
+    
+    @Override
+    public T find(final Class clazz, final Object id) {
+        return (T) this.entityManager.find(clazz, id);
+    }
 
     @Override
     public T update(final T t) {

@@ -183,4 +183,8 @@ INSERT INTO `teste_pet`.`servico_pessoa_fisica` (`id_servico`, `id_cliente`, `da
 INSERT INTO `teste_pet`.`servico_pessoa_juridica` (`id_servico`, `id_cliente`, `data_inicio`, `data_fim`, `valor`) VALUES ('3', '2', '2016-01-01 00:00:00', '2017-01-01 00:00:00', '1234');
 INSERT INTO `teste_pet`.`servico_pessoa_juridica` (`id_servico`, `id_cliente`, `data_inicio`, `data_fim`, `valor`) VALUES ('4', '4', '2016-01-01 00:00:00', '2017-01-01 00:00:00', '4321');
 
+INSERT INTO `teste_pet`.`servico_pessoa_fisica` (`id_servico`, `id_cliente`, `data_inicio`, `data_fim`, `valor`) VALUES ('1', '2', '2016-01-01 00:00:00', '2016-03-04 00:00:00', '100');
+INSERT INTO `teste_pet`.`servico_pessoa_fisica` (`id_servico`, `id_cliente`, `data_inicio`, `data_fim`, `valor`) VALUES ('2', '2', '2016-01-01 00:00:00', '2016-03-08 00:00:00', '200');
+INSERT INTO `teste_pet`.`servico_pessoa_fisica` (`id_servico`, `id_cliente`, `data_inicio`, `data_fim`, `valor`) VALUES ('3', '2', '2016-01-01 00:00:00', '2016-03-12 00:00:00', '300');
+INSERT INTO `teste_pet`.`servico_pessoa_fisica` (`id_servico`, `id_cliente`, `data_inicio`, `data_fim`, `valor`) VALUES ('4', '2', '2016-01-01 00:00:00', '2016-03-16 00:00:00', '400');
 

@@ -5,13 +5,13 @@
  */
 package com.lecom.testepet.controller;
 
-import com.lecom.testepet.bean.ClienteBean;
-import com.lecom.testepet.service.ClienteService;
+import com.lecom.testepet.bean.ServicoBean;
+import com.lecom.testepet.service.ServicoService;
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,19 +21,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author Ricardo
  */
 @Controller
-@RequestMapping("/cliente")
-public class ClienteController {
+@RequestMapping("/servico")
+public class ServicoController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ClienteController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ServicoController.class);
 
     @Autowired
-    private ClienteService clienteService;
+    private ServicoService servicoService;
 
-    @RequestMapping(value = "/find/services", method = RequestMethod.POST)
-    public @ResponseBody ClienteBean findServices(@RequestBody final ClienteBean clienteBean) {
+    @RequestMapping(value = "/find/all", method = RequestMethod.GET)
+    public @ResponseBody List<ServicoBean> findServices() {
         LOGGER.info("findServices Begin");
-        final ClienteBean clienteBeanRetorno = clienteService.find(clienteBean);
+        final List<ServicoBean> servicoBeanList = servicoService.findAll();
         LOGGER.info("findServices End");
-        return clienteBeanRetorno;
+        return servicoBeanList;
     }
 }
