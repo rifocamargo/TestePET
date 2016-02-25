@@ -49,9 +49,6 @@ public abstract class Cliente implements Serializable {
     @ManyToOne(optional = false)
     private Perfil perfil;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "servicoClientePK.cliente")
-    private List<ServicoCliente> servicoClienteList;
-
     /**
      * Default Constructor
      */
@@ -125,14 +122,6 @@ public abstract class Cliente implements Serializable {
      */
     public void setPerfil(final Perfil perfil) {
         this.perfil = perfil;
-    }
-
-    public List<ServicoCliente> getServicoClienteList() {
-        return servicoClienteList;
-    }
-
-    public void setServicoClienteList(List<ServicoCliente> servicoClienteList) {
-        this.servicoClienteList = servicoClienteList;
     }
 
     @Override

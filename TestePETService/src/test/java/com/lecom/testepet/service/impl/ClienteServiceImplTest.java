@@ -24,6 +24,8 @@ import com.lecom.testepet.bean.ServicoClienteBean;
 import com.lecom.testepet.bean.ServicoPessoaJuridicaBean;
 import com.lecom.testepet.dao.ClienteDao;
 import com.lecom.testepet.entity.Cliente;
+import com.lecom.testepet.entity.PessoaFisica;
+import com.lecom.testepet.entity.PessoaJuridica;
 import com.lecom.testepet.entity.Servico;
 import com.lecom.testepet.entity.ServicoCliente;
 import com.lecom.testepet.entity.ServicoPessoaFisica;
@@ -81,14 +83,14 @@ public class ClienteServiceImplTest {
         LOGGER.info("saveFindPessoaFisicaTest");
         clienteService.save(pessoaFisicaBean);
 
-        final Cliente cliente = pessoaFisicaBean.buildEntity();
+        final PessoaFisica cliente = pessoaFisicaBean.buildEntity();
         cliente.setIdCliente(1);
-        cliente.setServicoClienteList(new ArrayList<ServicoCliente>());
+        cliente.setServicoPessoaFisicaList(new ArrayList<ServicoPessoaFisica>());
         for (int i = 0; i < 4; i++) {
             final Servico servico = new Servico((i + 1), "Nome Serviço " + (i + 1), "Desc Serviço " + (i + 1));
             final ServicoClientePK servicoClientePK = new ServicoClientePK(cliente, servico);
             final ServicoPessoaFisica servicoPessoaFisica = new ServicoPessoaFisica(servicoClientePK, new Date(), new Date(), 100 + i);
-            cliente.getServicoClienteList().add(servicoPessoaFisica);
+            cliente.getServicoPessoaFisicaList().add(servicoPessoaFisica);
         }
         
         PowerMockito.when(clienteDao.find(Mockito.any())).thenReturn(cliente);
@@ -118,14 +120,14 @@ public class ClienteServiceImplTest {
         clienteService.save(pessoaJuridicaBean);
         pessoaJuridicaBean.setIdCliente(1);
 
-        final Cliente cliente = pessoaJuridicaBean.buildEntity();
+        final PessoaJuridica cliente = pessoaJuridicaBean.buildEntity();
         cliente.setIdCliente(1);
-        cliente.setServicoClienteList(new ArrayList<ServicoCliente>());
+        cliente.setServicoPessoaJuridicaList(new ArrayList<ServicoPessoaJuridica>());
         for (int i = 0; i < 4; i++) {
             final Servico servico = new Servico((i + 1), "Nome Serviço " + (i + 1), "Desc Serviço " + (i + 1));
             final ServicoClientePK servicoClientePK = new ServicoClientePK(cliente, servico);
             final ServicoPessoaJuridica servicoPessoaJuridica = new ServicoPessoaJuridica(servicoClientePK, new Date(), new Date(), 100 + i);
-            cliente.getServicoClienteList().add(servicoPessoaJuridica);
+            cliente.getServicoPessoaJuridicaList().add(servicoPessoaJuridica);
         }
         
         PowerMockito.when(clienteDao.find(Mockito.any())).thenReturn(cliente);

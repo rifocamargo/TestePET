@@ -14,6 +14,8 @@ import com.lecom.testepet.bean.ClienteBean;
 import com.lecom.testepet.dao.ClienteDao;
 import com.lecom.testepet.entity.Cliente;
 import com.lecom.testepet.service.ClienteService;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ClienteServiceImpl implements ClienteService {
@@ -24,6 +26,7 @@ public class ClienteServiceImpl implements ClienteService {
     private ClienteDao clienteDao;
     
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public void save(final ClienteBean clienteBean) {
     	LOGGER.info("Save Cliente begin");
     	LOGGER.info("Saving: {}", clienteBean);
@@ -32,6 +35,7 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public ClienteBean find(final ClienteBean clienteBean) {
     	LOGGER.info("Find Cliente begin");
         final Cliente cliente = clienteDao.find(clienteBean.getIdCliente());

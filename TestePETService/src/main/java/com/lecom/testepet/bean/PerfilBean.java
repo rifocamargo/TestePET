@@ -51,17 +51,33 @@ public class PerfilBean implements Serializable {
         this.pctDescontoPerfil = pctDescontoPerfil;
     }
 
+    public Integer getIdPerfil() {
+        return idPerfil;
+    }
+
+    public String getNomePerfil() {
+        return nomePerfil;
+    }
+
+    public String getDescricaoPerfil() {
+        return descricaoPerfil;
+    }
+
+    public double getPctDescontoPerfil() {
+        return pctDescontoPerfil;
+    }
+
     public Perfil buildEntity() {
         return new Perfil(idPerfil, nomePerfil, descricaoPerfil, pctDescontoPerfil);
     }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "PerfilBean [idPerfil=" + idPerfil + ", nomePerfil=" + nomePerfil + ", descricaoPerfil="
-				+ descricaoPerfil + ", pctDescontoPerfil=" + pctDescontoPerfil + "]";
-	}
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return "PerfilBean [idPerfil=" + idPerfil + ", nomePerfil=" + nomePerfil + ", descricaoPerfil="
+                + descricaoPerfil + ", pctDescontoPerfil=" + pctDescontoPerfil + "]";
+    }
 
 }

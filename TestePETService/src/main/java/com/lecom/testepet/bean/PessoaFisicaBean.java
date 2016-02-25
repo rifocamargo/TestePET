@@ -34,7 +34,7 @@ public class PessoaFisicaBean extends ClienteBean implements Serializable {
     }
 
     @Override
-    public Cliente buildEntity() {
+    public PessoaFisica buildEntity() {
         return new PessoaFisica(super.getNomeCliente(), super.getPerfilBean().buildEntity(), this.pessoaFisicaCpf);
     }
 
@@ -42,7 +42,7 @@ public class PessoaFisicaBean extends ClienteBean implements Serializable {
     public ClienteBean build(final Cliente cliente) {
         final PessoaFisica pessoaFisica = (PessoaFisica) cliente;
         this.pessoaFisicaCpf = pessoaFisica.getPessoaFisicaCpf();  
-        for (final ServicoCliente servicoCliente : cliente.getServicoClienteList()) {
+        for (final ServicoCliente servicoCliente : pessoaFisica.getServicoPessoaFisicaList()) {
             super.getServicoClienteBeanList().add(new ServicoPessoaFisicaBean().build(servicoCliente));
         }
         return super.build(cliente);

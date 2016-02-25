@@ -32,9 +32,9 @@ public class PessoaJuridicaBean extends ClienteBean implements Serializable {
 
     @Override
     public ClienteBean build(final Cliente cliente) {
-        final PessoaJuridica pessoaFisica = (PessoaJuridica) cliente;
-        this.cnpjPessoaJuridica = pessoaFisica.getCnpjPessoaJuridica();           
-        for (final ServicoCliente servicoCliente : cliente.getServicoClienteList()) {
+        final PessoaJuridica pessoaJuridica = (PessoaJuridica) cliente;
+        this.cnpjPessoaJuridica = pessoaJuridica.getCnpjPessoaJuridica();           
+        for (final ServicoCliente servicoCliente : pessoaJuridica.getServicoPessoaJuridicaList()) {
             super.getServicoClienteBeanList().add(new ServicoPessoaJuridicaBean().build(servicoCliente));
         }
         return super.build(cliente);

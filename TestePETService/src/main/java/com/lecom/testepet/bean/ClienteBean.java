@@ -6,14 +6,20 @@
 package com.lecom.testepet.bean;
 
 import com.lecom.testepet.entity.Cliente;
-import com.lecom.testepet.entity.ServicoCliente;
 import java.util.ArrayList;
 import java.util.List;
+import org.codehaus.jackson.annotate.JsonSubTypes;
+import org.codehaus.jackson.annotate.JsonTypeInfo;
+import org.codehaus.jackson.annotate.JsonTypeInfo.Id;
 
 /**
  *
  * @author Ricardo
  */
+@JsonTypeInfo(use = Id.NONE)
+@JsonSubTypes({
+    @JsonSubTypes.Type(value = PessoaJuridicaBean.class, name = "pessoaJuridicaBean"),
+    @JsonSubTypes.Type(value = PessoaFisicaBean.class, name = "pessoaFisicaBean")})
 public abstract class ClienteBean {
 
     private Integer idCliente;

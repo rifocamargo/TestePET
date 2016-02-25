@@ -8,5 +8,6 @@
     <class>com.lecom.testepet.entity.Servico</class>
     <class>com.lecom.testepet.entity.ServicoPessoaJuridica</class>
     <class>com.lecom.testepet.entity.ServicoPessoaFisica</class>
+    <class>com.lecom.testepet.entity.ServicoCliente</class>
   </persistence-unit>
 </persistence>
