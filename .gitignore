@@ -7,3 +7,5 @@
 /TestePETService/.settings/
 /TestePETWeb/target/
 /TestePETWeb/nb-configuration.xml
+/target/
+nbactions.xml

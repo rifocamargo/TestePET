@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.lecom</groupId>
     <artifactId>TestePET</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
         <module>TestePETDAO</module>
@@ -25,9 +25,8 @@
     
     <scm>
         <developerConnection>scm:git:https://github.com/rifocamargo/TestePET.git</developerConnection>
-        <!--<tag>develop</tag>-->
-      <tag>HEAD</tag>
-  </scm>
+        <tag>HEAD</tag>
+    </scm>
     
     <build>
         <plugins>
@@ -36,8 +35,9 @@
                 <version>2.5.2</version>
                 <configuration>
                     <autoVersionSubmodules>true</autoVersionSubmodules>
-                    <!--<tag>master</tag>-->
-                    <!--<tagNameFormat>${project.name}-@{project.version}-RELEASE-${client.name}-${timestamp}</tagNameFormat>-->
+                    <branchName>master</branchName>
+                    <username>ricardo.camargo</username>
+                    <password>rifoguit1986</password>
                 </configuration>
             </plugin>
         </plugins>
