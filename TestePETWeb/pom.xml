@@ -105,6 +105,11 @@
                     <warName>TestePETWeb</warName>
                     <containerConfigXML>${context.path}/context.xml</containerConfigXML>
                     <packagingExcludes>WEB-INF/classes/config/</packagingExcludes>
+					<archive>
+						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+						</manifest>
+					</archive>
                 </configuration>
             </plugin>
         </plugins>
