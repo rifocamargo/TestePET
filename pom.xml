@@ -36,7 +36,7 @@
                 <configuration>
                     <autoVersionSubmodules>true</autoVersionSubmodules>
                     <branchName>master</branchName>
-                    <username>ricardo.camargo</username>
+                    <username>rifocamargo@gmail.com</username>
                     <password>rifoguit1986</password>
                 </configuration>
             </plugin>
