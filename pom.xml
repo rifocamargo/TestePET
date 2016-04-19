@@ -34,7 +34,6 @@
                 <version>2.5.2</version>
                 <configuration>
                     <autoVersionSubmodules>true</autoVersionSubmodules>
-                    <branchName>master</branchName>
                     <username>rifocamargo@gmail.com</username>
                     <password>rifoguit1986</password>
                 </configuration>
