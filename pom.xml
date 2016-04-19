@@ -23,6 +23,25 @@
         <jackson.version>1.9.10</jackson.version>
     </properties>
     
+    <scm>
+        <developerConnection>scm:git:https://github.com/rifocamargo/TestePET.git</developerConnection>
+        <!--<tag>develop</tag>-->
+    </scm>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.2</version>
+                <configuration>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <!--<tag>master</tag>-->
+                    <!--<tagNameFormat>${project.name}-@{project.version}-RELEASE-${client.name}-${timestamp}</tagNameFormat>-->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
