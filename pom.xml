@@ -107,4 +107,23 @@
             <version>2.9.2</version>
         </dependency>
     </dependencies>
+    <build>
+        <plugin>
+            <groupId>com.spotify</groupId>
+            <artifactId>docker-maven-plugin</artifactId>
+            <version>0.2.3</version>
+            <executions>
+                <execution>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>build</goal>
+                    </goals>
+                </execution>
+            </executions>
+            <configuration>
+                <dockerDirectory>${project.basedir}</dockerDirectory>
+                <imageName>testepet/${project.artifactId}</imageName>
+            </configuration>
+        </plugin>
+    </build>
 </project>
